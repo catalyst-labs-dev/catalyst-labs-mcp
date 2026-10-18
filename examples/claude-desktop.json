@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "career-site-jobs-scraper": {
+      "command": "npx",
+      "args": ["-y", "mcp-remote", "https://mcp.apify.com/?tools=catalyst-labs/career-site-jobs-scraper", "--header", "Authorization: Bearer ${APIFY_TOKEN}"],
+      "env": { "APIFY_TOKEN": "<your-apify-token>" }
+    }
+  }
+}

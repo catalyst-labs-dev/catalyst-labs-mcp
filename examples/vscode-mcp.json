@@ -1,0 +1,12 @@
+{
+  "inputs": [
+    { "type": "promptString", "id": "apify-token", "description": "Apify API token", "password": true }
+  ],
+  "servers": {
+    "career-site-jobs-scraper": {
+      "type": "http",
+      "url": "https://mcp.apify.com/?tools=catalyst-labs/career-site-jobs-scraper",
+      "headers": { "Authorization": "Bearer ${input:apify-token}" }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "career-site-jobs-scraper": {
+      "url": "https://mcp.apify.com/?tools=catalyst-labs/career-site-jobs-scraper"
+    }
+  }
+}

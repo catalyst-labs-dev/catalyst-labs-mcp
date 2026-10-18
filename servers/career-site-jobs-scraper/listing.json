@@ -1,0 +1,31 @@
+{
+  "_comment": "Shared listing copy for every directory (Smithery, Glama, mcp.so, cursor.directory). Keep in sync with server.json and the Apify Store page.",
+  "slug": "career-site-jobs-scraper",
+  "apifyActor": "catalyst-labs/career-site-jobs-scraper",
+  "mcpUrl": "https://mcp.apify.com/?tools=catalyst-labs/career-site-jobs-scraper",
+  "mcpToolName": "catalyst-labs--career-site-jobs-scraper",
+  "storeUrl": "https://apify.com/catalyst-labs/career-site-jobs-scraper",
+  "name": "Career Site Jobs Scraper",
+  "tagline": "Open jobs from company career sites (Workday, Greenhouse, Lever, Ashby +13 ATS) as JSON.",
+  "description": "Give it company names, careers-page URLs or job-board links; get every open job as normalized JSON: title, department, location, city, ISO country code, remote/hybrid/onsite, seniority, yearly salary range, posted date, job and apply URLs. Reads the employer's own ATS live (Workday, Greenhouse, Lever, Ashby, SmartRecruiters, Oracle, Workable, Recruitee, Personio, BambooHR, Breezy, Teamtailor, Gem, Rippling, Pinpoint, Jobvite, JazzHR). Verifies company matches and can return only new and closed jobs for monitoring. Pay per result via Apify: $0.01 per run + $0.008 per job (Free plan), lower on paid plans; misses are never charged.",
+  "categories": ["Data & Analytics", "Search", "Business"],
+  "tags": ["jobs", "job listings", "career sites", "ATS", "workday", "greenhouse", "lever", "ashby", "smartrecruiters", "recruiting", "hiring signals", "apify"],
+  "auth": "OAuth (sign in with Apify) or header Authorization: Bearer <APIFY_TOKEN>",
+  "exampleToolCall": {
+    "companies": ["Stripe", "https://intel.wd1.myworkdayjobs.com/External"],
+    "keywords": ["engineer"],
+    "maxJobsPerCompany": 5
+  },
+  "serverConfig": {
+    "mcpServers": {
+      "career-site-jobs-scraper": {
+        "url": "https://mcp.apify.com/?tools=catalyst-labs/career-site-jobs-scraper"
+      }
+    }
+  },
+  "smithery": {
+    "publishMethod": "URL (smithery.ai/new). No smithery.yaml needed: that file is only for servers Smithery builds from source.",
+    "qualifiedName": "catalyst-labs-dev/career-site-jobs-scraper",
+    "cli": "npx -y @smithery/cli@4.11.1 mcp publish \"https://mcp.apify.com/?tools=catalyst-labs/career-site-jobs-scraper\" -n catalyst-labs-dev/career-site-jobs-scraper"
+  }
+}

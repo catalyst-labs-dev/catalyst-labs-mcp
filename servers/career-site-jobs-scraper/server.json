@@ -1,0 +1,41 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.catalyst-labs-dev/career-site-jobs-scraper",
+  "title": "Career Site Jobs Scraper",
+  "description": "Open jobs from company career sites (Workday, Greenhouse, Lever, Ashby +13 ATS) as JSON.",
+  "version": "1.0.0",
+  "websiteUrl": "https://apify.com/catalyst-labs/career-site-jobs-scraper",
+  "repository": {
+    "url": "https://github.com/catalyst-labs-dev/catalyst-labs-mcp",
+    "source": "github",
+    "subfolder": "servers/career-site-jobs-scraper"
+  },
+  "icons": [
+    {
+      "src": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/1ydY5YsykVmyMWtQX-actor-3bd7Pfnzvdb8C9NbR-wXPWRFZrFG-IMG_9676.png",
+      "mimeType": "image/png"
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://mcp.apify.com/?tools=catalyst-labs/career-site-jobs-scraper",
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "Apify API token as 'Bearer <token>' (console.apify.com/settings/integrations). Optional if your MCP client supports OAuth: the server returns 401 with OAuth discovery and you sign in with Apify instead.",
+          "value": "Bearer {apify_token}",
+          "isRequired": false,
+          "isSecret": true,
+          "variables": {
+            "apify_token": {
+              "description": "Your Apify API token",
+              "isRequired": true,
+              "isSecret": true
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
