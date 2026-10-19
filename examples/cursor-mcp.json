@@ -11,6 +11,12 @@
       "headers": {
         "Authorization": "Bearer ${env:APIFY_TOKEN}"
       }
+    },
+    "youtube-transcript-api": {
+      "url": "https://mcp.apify.com/?tools=catalyst-labs/youtube-transcript-api",
+      "headers": {
+        "Authorization": "Bearer ${env:APIFY_TOKEN}"
+      }
     }
   }
 }

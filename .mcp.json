@@ -5,6 +5,9 @@
     },
     "website-screenshot-pdf-api": {
       "url": "https://mcp.apify.com/?tools=catalyst-labs/website-screenshot-pdf-api"
+    },
+    "youtube-transcript-api": {
+      "url": "https://mcp.apify.com/?tools=catalyst-labs/youtube-transcript-api"
     }
   }
 }

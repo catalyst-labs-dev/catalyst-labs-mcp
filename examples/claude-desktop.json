@@ -25,6 +25,19 @@
       "env": {
         "APIFY_TOKEN": "<your-apify-token>"
       }
+    },
+    "youtube-transcript-api": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://mcp.apify.com/?tools=catalyst-labs/youtube-transcript-api",
+        "--header",
+        "Authorization: Bearer ${APIFY_TOKEN}"
+      ],
+      "env": {
+        "APIFY_TOKEN": "<your-apify-token>"
+      }
     }
   }
 }

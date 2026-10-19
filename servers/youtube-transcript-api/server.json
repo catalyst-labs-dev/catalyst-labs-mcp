@@ -1,0 +1,41 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.catalyst-labs-dev/youtube-transcript-api",
+  "title": "YouTube Transcript API",
+  "description": "Transcripts + metadata from YouTube videos, Shorts, channels, playlists and search; text/SRT/VTT.",
+  "version": "1.0.0",
+  "websiteUrl": "https://apify.com/catalyst-labs/youtube-transcript-api",
+  "repository": {
+    "url": "https://github.com/catalyst-labs-dev/catalyst-labs-mcp",
+    "source": "github",
+    "subfolder": "servers/youtube-transcript-api"
+  },
+  "icons": [
+    {
+      "src": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/1ydY5YsykVmyMWtQX-actor-9ffm7oCsXgtaDkJzr-xlVQ58PKgf-IMG_9679.png",
+      "mimeType": "image/png"
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://mcp.apify.com/?tools=catalyst-labs/youtube-transcript-api",
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "Apify API token as 'Bearer <token>' (console.apify.com/settings/integrations). Optional if your MCP client supports OAuth: the server returns 401 with OAuth discovery and you sign in with Apify instead.",
+          "value": "Bearer {apify_token}",
+          "isRequired": false,
+          "isSecret": true,
+          "variables": {
+            "apify_token": {
+              "description": "Your Apify API token",
+              "isRequired": true,
+              "isSecret": true
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
