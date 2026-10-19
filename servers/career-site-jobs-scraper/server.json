@@ -2,7 +2,7 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.catalyst-labs-dev/career-site-jobs-scraper",
   "title": "Career Site Jobs Scraper",
-  "description": "Open jobs from company career sites (Workday, Greenhouse, Lever, Ashby +13 ATS) as JSON.",
+  "description": "Live open jobs from the career sites of companies you name (Workday, Greenhouse, Lever +14 ATS).",
   "version": "1.0.0",
   "websiteUrl": "https://apify.com/catalyst-labs/career-site-jobs-scraper",
   "repository": {

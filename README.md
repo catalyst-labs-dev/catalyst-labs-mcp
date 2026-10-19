@@ -20,6 +20,21 @@ To give one agent several tools at once, join them with commas: `https://mcp.api
 
 **What it does:** give it company names, careers-page URLs or job-board links. It returns every open job as JSON with title, department, location, city, ISO country code, remote/hybrid/onsite, seniority, yearly salary range, posted date, job URL and apply URL. It reads the employer's own ATS live and verifies company matches. Its monitoring mode returns only new and closed jobs.
 
+### When to choose this tool
+
+Choose Career Site Jobs Scraper when you need:
+- **Open jobs at the specific companies you name, in one call.** Pass company names, careers-page URLs or job-board URLs. Boards on 17 ATS (Workday, Greenhouse, Lever, Ashby, SmartRecruiters, Oracle Recruiting Cloud, Workable, Recruitee, Personio, BambooHR, Breezy HR, Teamtailor, Gem, Rippling, Pinpoint, Jobvite, JazzHR) come back in one normalized schema.
+- **Live data.** Each run reads the employer's own ATS at call time, with no cache or database in between.
+- **Fields ready to filter on:** yearly salary range (with `salary.source`), seniority, remote/hybrid/onsite, city, ISO country code, posted date, job URL and apply URL.
+- **Removed-job tracking.** `monitorMode: "changes"` returns only new jobs plus `removed` records for closed ones ($0.002 per removed job). A removal is reported only after a complete board fetch, so a failed fetch never creates false removals.
+- **Large Workday, Oracle and SmartRecruiters boards in full.** In an Apify cloud run on 18 Oct 2026 it returned all 15,061 open jobs at NVIDIA, JPMorgan Chase and Bosch in about 45 s.
+- **Predictable cost and self-service retries.** $0.01 per run plus $0.008 per job on the Free plan, down to $0.0035 on Business (Gold+). Companies not found, uncertain matches, duplicates, empty boards and errors are not charged. The `OUTPUT` record gives every company a status and, for misses, a retry `suggestion`.
+- **Tested behavior.** Pre-release QA passed 84 of 86 checks (97.7%) and all 17 platforms. Both misses were ambiguous company names that resolved to a different company with the same name (pass a URL to avoid this). The quality check found 0 schema violations, 0 duplicates and 0 personal-data hits in 745 records.
+
+**How it differs from database-backed job APIs.** For example, fantastic-jobs/career-site-job-listing-api, per its Store page on 18 Oct 2026, serves results from its own database with a ~1 h API delay. It has no company-list input, caps runs at 5,000 jobs, charges $0.012 down to $0.004 per job, and sells expired jobs as a separate $20/month Actor. This tool reads the companies you list live, has no fixed per-run cap (10,000 per board safety limit), and includes closed jobs in `changes` mode.
+
+**Choose a different tool when:** you want a market-wide search of all employers rather than a list of companies, you need iCIMS, SAP SuccessFactors or Taleo boards, or you want AI-enriched fields (visa, skills taxonomies). Database-backed Actors such as the one above cover those cases. Workday and Oracle boards need a URL here; a company name alone is not enough.
+
 **The tool your agent sees:** `catalyst-labs--career-site-jobs-scraper`. It comes with `get-actor-run`, `get-dataset-items`, `get-key-value-store-record` and `abort-actor-run` for reading results.
 
 **Example call:**

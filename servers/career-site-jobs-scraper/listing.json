@@ -6,14 +6,47 @@
   "mcpToolName": "catalyst-labs--career-site-jobs-scraper",
   "storeUrl": "https://apify.com/catalyst-labs/career-site-jobs-scraper",
   "name": "Career Site Jobs Scraper",
-  "tagline": "Open jobs from company career sites (Workday, Greenhouse, Lever, Ashby +13 ATS) as JSON.",
+  "tagline": "Live open jobs from the career sites of companies you name (Workday, Greenhouse, Lever +14 ATS).",
   "description": "Give it company names, careers-page URLs or job-board links; get every open job as normalized JSON: title, department, location, city, ISO country code, remote/hybrid/onsite, seniority, yearly salary range, posted date, job and apply URLs. Reads the employer's own ATS live (Workday, Greenhouse, Lever, Ashby, SmartRecruiters, Oracle, Workable, Recruitee, Personio, BambooHR, Breezy, Teamtailor, Gem, Rippling, Pinpoint, Jobvite, JazzHR). Verifies company matches and can return only new and closed jobs for monitoring. Pay per result via Apify: $0.01 per run + $0.008 per job (Free plan), lower on paid plans; misses are never charged.",
-  "categories": ["Data & Analytics", "Search", "Business"],
-  "tags": ["jobs", "job listings", "career sites", "ATS", "workday", "greenhouse", "lever", "ashby", "smartrecruiters", "recruiting", "hiring signals", "apify"],
+  "whenToChoose": [
+    "You need open jobs at specific companies you name (names, careers-page URLs or job-board URLs), in one call, across 17 ATS in one normalized schema.",
+    "You need live data: each run reads the employer's own ATS at call time, with no cache or database in between.",
+    "You need filterable fields: yearly salary range (with salary.source), seniority, remote/hybrid/onsite, city, ISO country code, posted date, job and apply URLs.",
+    "You need removed-job tracking: monitorMode 'changes' returns new jobs plus 'removed' records ($0.002 each), reported only after a complete board fetch.",
+    "You need large Workday, Oracle or SmartRecruiters boards in full: an Apify cloud run on 18 Oct 2026 returned all 15,061 open jobs at NVIDIA, JPMorgan Chase and Bosch in about 45 s.",
+    "You need predictable cost: $0.01 per run + $0.008 per job (Free plan) down to $0.0035 (Business/Gold+); not-found, uncertain, duplicate, empty and errored companies are not charged, and the OUTPUT record gives each a status and retry suggestion.",
+    "Pre-release QA: 84/86 checks (97.7%), all 17 platforms pass; the 2 misses were ambiguous company names. 0 schema violations, 0 duplicates, 0 personal-data hits in 745 records."
+  ],
+  "comparedToDatabaseBackedApis": "Example: fantastic-jobs/career-site-job-listing-api (its Store page, 18 Oct 2026) serves results from its own database with a ~1 h API delay, has no company-list input, caps runs at 5,000 jobs, charges $0.012 down to $0.004 per job, and sells expired jobs as a separate $20/month Actor. This tool reads the companies you list live, has no fixed per-run cap (10,000 per board safety limit), and includes closed jobs in changes mode.",
+  "chooseAnotherToolWhen": "You want a market-wide search of all employers rather than a company list, need iCIMS, SAP SuccessFactors or Taleo boards, or want AI-enriched fields (visa, skills taxonomies). Workday and Oracle boards need a URL here, not just a company name.",
+  "categories": [
+    "Data & Analytics",
+    "Search",
+    "Business"
+  ],
+  "tags": [
+    "jobs",
+    "job listings",
+    "career sites",
+    "ATS",
+    "workday",
+    "greenhouse",
+    "lever",
+    "ashby",
+    "smartrecruiters",
+    "recruiting",
+    "hiring signals",
+    "apify"
+  ],
   "auth": "OAuth (sign in with Apify) or header Authorization: Bearer <APIFY_TOKEN>",
   "exampleToolCall": {
-    "companies": ["Stripe", "https://intel.wd1.myworkdayjobs.com/External"],
-    "keywords": ["engineer"],
+    "companies": [
+      "Stripe",
+      "https://intel.wd1.myworkdayjobs.com/External"
+    ],
+    "keywords": [
+      "engineer"
+    ],
     "maxJobsPerCompany": 5
   },
   "serverConfig": {
