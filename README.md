@@ -9,10 +9,10 @@ Dependable tools for AI agents, built by **Catalyst Labs** and hosted on [Apify]
 | Tool | What it does | MCP URL | Store page |
 |---|---|---|---|
 | **Career Site Jobs Scraper** | Open jobs from company career sites (Workday, Greenhouse, Lever, Ashby, SmartRecruiters, Oracle +11 ATS) as normalized JSON | `https://mcp.apify.com/?tools=catalyst-labs/career-site-jobs-scraper` | [apify.com/catalyst-labs/career-site-jobs-scraper](https://apify.com/catalyst-labs/career-site-jobs-scraper) |
-| Website Screenshot & PDF | *Coming soon* | | |
+| **Website Screenshot & PDF API** | Full-page screenshots (PNG, JPEG, WebP) and PDFs of any URL, cookie banners removed, desktop or mobile | `https://mcp.apify.com/?tools=catalyst-labs/website-screenshot-pdf-api` | [apify.com/catalyst-labs/website-screenshot-pdf-api](https://apify.com/catalyst-labs/website-screenshot-pdf-api) |
 | YouTube Transcripts | *Coming soon* | | |
 
-To give one agent several tools at once, join them with commas: `https://mcp.apify.com/?tools=catalyst-labs/career-site-jobs-scraper,catalyst-labs/<next-tool>`.
+To give one agent several tools at once, join them with commas: `https://mcp.apify.com/?tools=catalyst-labs/career-site-jobs-scraper,catalyst-labs/website-screenshot-pdf-api`.
 
 ---
 
@@ -54,6 +54,42 @@ Choose Career Site Jobs Scraper when you need:
 | Closed job detected (monitoring) | $0.002 | $0.002 | $0.002 | $0.002 |
 
 Companies that aren't found, uncertain matches and errors are never charged. A 5-job test call costs about $0.05. Apify's Free plan includes $5 of monthly credit. See the [Store page](https://apify.com/catalyst-labs/career-site-jobs-scraper) for current prices and the full documentation.
+
+---
+
+## Website Screenshot & PDF API
+
+**What it does:** give it one URL or thousands. It returns full-page or viewport screenshots (PNG, JPEG, WebP) and PDFs, each with a direct `fileUrl`, `width`/`height`, `title` and `status`, after removing cookie banners, loading lazy images and fixing sticky headers in a real Chrome browser.
+
+### When to choose this tool
+
+Choose Website Screenshot & PDF API when you need:
+- You need a picture or PDF of a public web page in one call: PNG, JPEG, WebP and PDF from the same run, desktop, laptop, tablet or mobile (iPhone 3x) presets or a custom viewport.
+- You need clean captures: cookie banners clicked away on 30+ consent platforms plus 'Accept' text in 30+ languages, lazy images loaded, sticky headers shown once, chat widgets and popups hidden.
+- You need PDF control: paper size, margins, landscape, print or screen CSS, or one single long page.
+- You need to pay only for delivered files: failed, blocked (bot check), HTTP-error, blank and over-budget URLs are free and come back with errorType and a retry hint.
+- You need a hard cost cap: maxTotalChargeUsd stops cleanly and marks the rest SPENDING_LIMIT (cloud-tested 18 Oct 2026).
+- Pre-release cloud QA (18 Oct 2026): 28/28 reachable sites on desktop and 27/27 on mobile, 11/11 option scenarios; bot-protected sites failed as BLOCKED and were not charged.
+
+**Choose a different tool when:** You need a sub-second synchronous HTTP endpoint (this runs as batch jobs, typically 5-30 s per page) or reliable access to sites behind enterprise bot protection (WSJ, G2, Zillow, Indeed still blocked residential IPs in our tests).
+
+**The tool your agent sees:** `catalyst-labs--website-screenshot-pdf-api`.
+
+**Example call:**
+```json
+{ "urls": ["https://example.com"], "formats": ["jpeg"], "fullPage": false }
+```
+- `urls` (required). Optional: `formats` (`png`, `jpeg`, `webp`, `pdf`), `device`, `fullPage`, `captureSelector`, `waitForSelector`, `darkMode`, `pdfFormat`, `pdfLandscape`, `pdfSinglePage`, `cookies`, `headers`, `proxyConfiguration`.
+
+**Pricing** (pay per file, billed by Apify):
+
+| Event | Free plan | Starter | Scale | Business+ |
+|---|---|---|---|---|
+| Run start | $0.01 | $0.01 | $0.01 | $0.01 |
+| Screenshot | $0.008 | $0.007 | $0.006 | $0.005 |
+| PDF | $0.012 | $0.012 | $0.012 | $0.012 |
+
+The example call costs $0.018. Failed, blocked and skipped URLs are never charged. See the [Store page](https://apify.com/catalyst-labs/website-screenshot-pdf-api).
 
 ---
 

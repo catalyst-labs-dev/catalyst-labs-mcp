@@ -2,7 +2,15 @@
   "mcpServers": {
     "career-site-jobs-scraper": {
       "url": "https://mcp.apify.com/?tools=catalyst-labs/career-site-jobs-scraper",
-      "headers": { "Authorization": "Bearer ${env:APIFY_TOKEN}" }
+      "headers": {
+        "Authorization": "Bearer ${env:APIFY_TOKEN}"
+      }
+    },
+    "website-screenshot-pdf-api": {
+      "url": "https://mcp.apify.com/?tools=catalyst-labs/website-screenshot-pdf-api",
+      "headers": {
+        "Authorization": "Bearer ${env:APIFY_TOKEN}"
+      }
     }
   }
 }

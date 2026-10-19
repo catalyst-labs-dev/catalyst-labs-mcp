@@ -1,0 +1,41 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.catalyst-labs-dev/website-screenshot-pdf-api",
+  "title": "Website Screenshot & PDF API",
+  "description": "Full-page screenshots (PNG/JPEG/WebP) and PDFs of any URL, with cookie banners removed.",
+  "version": "1.0.0",
+  "websiteUrl": "https://apify.com/catalyst-labs/website-screenshot-pdf-api",
+  "repository": {
+    "url": "https://github.com/catalyst-labs-dev/catalyst-labs-mcp",
+    "source": "github",
+    "subfolder": "servers/website-screenshot-pdf-api"
+  },
+  "icons": [
+    {
+      "src": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/1ydY5YsykVmyMWtQX-actor-Q0IjIMqCA5OnecDNj-5sY3dbs0qS-IMG_9678.png",
+      "mimeType": "image/png"
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://mcp.apify.com/?tools=catalyst-labs/website-screenshot-pdf-api",
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "Apify API token as 'Bearer <token>' (console.apify.com/settings/integrations). Optional if your MCP client supports OAuth: the server returns 401 with OAuth discovery and you sign in with Apify instead.",
+          "value": "Bearer {apify_token}",
+          "isRequired": false,
+          "isSecret": true,
+          "variables": {
+            "apify_token": {
+              "description": "Your Apify API token",
+              "isRequired": true,
+              "isSecret": true
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "_comment": "Shared listing copy for every directory. Keep in sync with server.json and the Apify Store page.",
+  "slug": "website-screenshot-pdf-api",
+  "apifyActor": "catalyst-labs/website-screenshot-pdf-api",
+  "mcpUrl": "https://mcp.apify.com/?tools=catalyst-labs/website-screenshot-pdf-api",
+  "mcpToolName": "catalyst-labs--website-screenshot-pdf-api",
+  "storeUrl": "https://apify.com/catalyst-labs/website-screenshot-pdf-api",
+  "name": "Website Screenshot & PDF API",
+  "tagline": "Full-page screenshots (PNG/JPEG/WebP) and PDFs of any URL, with cookie banners removed.",
+  "description": "Give it one URL or thousands; get full-page or viewport screenshots (PNG, JPEG, WebP) and PDFs, each with a direct fileUrl, width/height, title and status. Runs real Chrome: removes cookie banners, loads lazy images, fixes sticky headers, hides popups, renders emoji and CJK text. Element capture, wait-for-selector, dark mode, custom CSS, headers and cookies. Pay per file via Apify: $0.01 per run + $0.008 per screenshot (Free plan, down to $0.005) and $0.012 per PDF; failures are never charged.",
+  "whenToChoose": [
+    "You need a picture or PDF of a public web page in one call: PNG, JPEG, WebP and PDF from the same run, desktop, laptop, tablet or mobile (iPhone 3x) presets or a custom viewport.",
+    "You need clean captures: cookie banners clicked away on 30+ consent platforms plus 'Accept' text in 30+ languages, lazy images loaded, sticky headers shown once, chat widgets and popups hidden.",
+    "You need PDF control: paper size, margins, landscape, print or screen CSS, or one single long page.",
+    "You need to pay only for delivered files: failed, blocked (bot check), HTTP-error, blank and over-budget URLs are free and come back with errorType and a retry hint.",
+    "You need a hard cost cap: maxTotalChargeUsd stops cleanly and marks the rest SPENDING_LIMIT (cloud-tested 18 Oct 2026).",
+    "Pre-release cloud QA (18 Oct 2026): 28/28 reachable sites on desktop and 27/27 on mobile, 11/11 option scenarios; bot-protected sites failed as BLOCKED and were not charged."
+  ],
+  "chooseAnotherToolWhen": "You need a sub-second synchronous HTTP endpoint (this runs as batch jobs, typically 5-30 s per page) or reliable access to sites behind enterprise bot protection (WSJ, G2, Zillow, Indeed still blocked residential IPs in our tests).",
+  "categories": [
+    "Developer Tools",
+    "Browser Automation",
+    "Productivity"
+  ],
+  "tags": [
+    "screenshot",
+    "website screenshot",
+    "full-page screenshot",
+    "pdf",
+    "html to pdf",
+    "url to pdf",
+    "cookie banner",
+    "headless chrome",
+    "mobile screenshot",
+    "apify"
+  ],
+  "auth": "OAuth (sign in with Apify) or header Authorization: Bearer <APIFY_TOKEN>",
+  "exampleToolCall": {
+    "urls": [
+      "https://example.com"
+    ],
+    "formats": [
+      "jpeg"
+    ],
+    "fullPage": false
+  },
+  "serverConfig": {
+    "mcpServers": {
+      "website-screenshot-pdf-api": {
+        "url": "https://mcp.apify.com/?tools=catalyst-labs/website-screenshot-pdf-api"
+      }
+    }
+  },
+  "smithery": {
+    "publishMethod": "URL (smithery.ai/new).",
+    "qualifiedName": "catalyst-labs-dev/website-screenshot-pdf-api",
+    "cli": "npx -y @smithery/cli@4.11.1 mcp publish \"https://mcp.apify.com/?tools=catalyst-labs/website-screenshot-pdf-api\" -n catalyst-labs-dev/website-screenshot-pdf-api"
+  }
+}
