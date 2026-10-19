@@ -4,6 +4,8 @@ Dependable tools for AI agents, built by **Catalyst Labs** and hosted on [Apify]
 
 > This repository contains documentation and MCP listing metadata only. The tools themselves run on Apify.
 
+**Website:** https://catalyst-labs-dev.github.io/ · **Benchmarks (our own tests, Oct 18, 2026):** [benchmarks/](benchmarks/README.md) · **Free n8n workflows:** [catalyst-labs-dev/n8n-templates](https://github.com/catalyst-labs-dev/n8n-templates)
+
 ## Tools
 
 | Tool | What it does | MCP URL | Store page |
