@@ -38,6 +38,19 @@
       "env": {
         "APIFY_TOKEN": "<your-apify-token>"
       }
+    },
+    "podcast-transcript-api": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://mcp.apify.com/?tools=catalyst-labs/podcast-transcript-api",
+        "--header",
+        "Authorization: Bearer ${APIFY_TOKEN}"
+      ],
+      "env": {
+        "APIFY_TOKEN": "<your-apify-token>"
+      }
     }
   }
 }

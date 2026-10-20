@@ -13,8 +13,9 @@ Dependable tools for AI agents, built by **Catalyst Labs** and hosted on [Apify]
 | **Career Site Jobs Scraper** | Open jobs from company career sites (Workday, Greenhouse, Lever, Ashby, SmartRecruiters, Oracle +11 ATS) as normalized JSON | `https://mcp.apify.com/?tools=catalyst-labs/career-site-jobs-scraper` | [apify.com/catalyst-labs/career-site-jobs-scraper](https://apify.com/catalyst-labs/career-site-jobs-scraper) |
 | **Website Screenshot & PDF API** | Full-page screenshots (PNG, JPEG, WebP) and PDFs of any URL, cookie banners removed, desktop or mobile | `https://mcp.apify.com/?tools=catalyst-labs/website-screenshot-pdf-api` | [apify.com/catalyst-labs/website-screenshot-pdf-api](https://apify.com/catalyst-labs/website-screenshot-pdf-api) |
 | **YouTube Transcript API** | Transcripts with timestamps and metadata from YouTube videos, Shorts, playlists, channels and search, as text, LLM-ready text, segments, SRT or VTT | `https://mcp.apify.com/?tools=catalyst-labs/youtube-transcript-api` | [apify.com/catalyst-labs/youtube-transcript-api](https://apify.com/catalyst-labs/youtube-transcript-api) |
+| **Podcast Transcript API** | Podcast and audio transcripts from RSS feeds, Apple Podcasts links, episode pages or audio URLs: the publisher's own transcript when one exists, Whisper speech-to-text otherwise; text, LLM text, segments, SRT, VTT, Markdown | `https://mcp.apify.com/?tools=catalyst-labs/podcast-transcript-api` | [apify.com/catalyst-labs/podcast-transcript-api](https://apify.com/catalyst-labs/podcast-transcript-api) |
 
-To give one agent several tools at once, join them with commas: `https://mcp.apify.com/?tools=catalyst-labs/career-site-jobs-scraper,catalyst-labs/website-screenshot-pdf-api,catalyst-labs/youtube-transcript-api`.
+To give one agent several tools at once, join them with commas: `https://mcp.apify.com/?tools=catalyst-labs/career-site-jobs-scraper,catalyst-labs/website-screenshot-pdf-api,catalyst-labs/youtube-transcript-api,catalyst-labs/podcast-transcript-api`.
 
 ---
 
@@ -129,6 +130,42 @@ Choose YouTube Transcript API when you need:
 | Transcript delivered (all formats + metadata) | $0.008 | $0.007 | $0.006 | $0.005 |
 
 The example call costs $0.008. Videos without captions, unavailable, invalid, filtered and skipped videos are never charged. See the [Store page](https://apify.com/catalyst-labs/youtube-transcript-api).
+
+## Podcast Transcript API
+
+**What it does:** give it RSS feeds, Apple Podcasts show or episode links, episode pages or direct audio/video URLs. It returns one JSON record per episode with the transcript (text, LLM-ready text, timestamped segments, SRT, WebVTT, Markdown) and metadata: show, episode, publish date, duration, chapters, language, and speaker labels when the publisher provides them. It uses the show's own published transcript first and runs Whisper speech-to-text only when there is none.
+
+### When to choose this tool
+
+Choose Podcast Transcript API when you need:
+- You want the cheapest correct transcript: the publisher's own transcript (Podcasting 2.0 <podcast:transcript>, SRT/VTT/JSON/HTML) is used first at a flat $0.01 per episode; speech-to-text runs only when none exists.
+- You have mixed inputs: RSS feeds, Apple Podcasts show and episode (?i=) links, episode pages (feed found automatically) and direct mp3/m4a/video URLs in one call.
+- You need agent-ready output: text, llmText, timestamped segments, SRT, VTT, Markdown plus a combined TRANSCRIPTS.md, chapters and speaker labels.
+- You need to monitor shows: onlyNewEpisodes with a monitorId returns only episodes published since the last run (cloud-tested 20 Oct 2026: second run returned 0 episodes, $0).
+- You need hard cost control: maxTotalChargeUsd, maxAudioMinutes and maxMinutesPerEpisode (skip or truncate) stop before spending; over-budget, unreachable, no-speech and invalid inputs come back as free rows with errorType, retryable and hint.
+- Accuracy check (20 Oct 2026, against publisher transcripts): English word error rate about 2-3%, Spanish about 10%, German about 17%; long episodes are cut at pauses into ~2-minute chunks so no sentences are dropped.
+- Head-to-head (our test, Apify cloud, 20 Oct 2026, identical inputs against 4 podcast transcript Actors in the Store): 10/10 checks; the others scored 2-6/10.
+
+**How it compares.** Per their Apify Store pages on 20 Oct 2026: steadyfetch/media-transcriber charges $0.006 per audio minute and always transcribes, even when the show publishes a free transcript; spokentext/spotify-podcast-transcript charges $0.003 per minute. This tool charges $0.01 per episode when a publisher transcript exists and $0.009-0.006 per minute otherwise.
+
+**Choose a different tool when:** You need Spotify-exclusive episodes, the lowest possible per-minute speech-to-text price (some Store Actors charge $0.003-0.006/min), or speaker diarization of speech-to-text audio (speaker labels come only from publisher transcripts).
+
+**The tool your agent sees:** `catalyst-labs--podcast-transcript-api`.
+
+**Example call:**
+```json
+{ "sources": ["https://podnews.net/rss"], "maxEpisodesPerFeed": 1 }
+```
+- `sources` (required): RSS feeds, Apple Podcasts links, episode pages or audio/video URLs. Optional: `maxEpisodesPerFeed`, `transcriptMode` (`auto`, `publisherOnly`, `speechToText`), `maxAudioMinutes`, `maxMinutesPerEpisode`, `truncateLongEpisodes`, `onlyNewEpisodes` + `monitorId`, `publishedAfter`, `titleFilter`, `language`, `vocabulary`, `outputFormats` (`text`, `segments`, `llmText`, `srt`, `vtt`, `markdown`), `includeChapters`.
+
+**Pricing** (pay per delivered transcript, billed by Apify; no run fee):
+
+| Event | Free plan | Starter | Scale | Business+ |
+|---|---|---|---|---|
+| Episode transcript from the publisher (any length) | $0.01 | $0.01 | $0.01 | $0.01 |
+| Speech-to-text audio minute | $0.009 | $0.008 | $0.007 | $0.006 |
+
+The example call costs $0.01. Failed, silent, unreachable, over-budget and skipped episodes are never charged. See the [Store page](https://apify.com/catalyst-labs/podcast-transcript-api).
 
 ---
 

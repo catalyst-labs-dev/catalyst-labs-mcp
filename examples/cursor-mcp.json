@@ -17,6 +17,12 @@
       "headers": {
         "Authorization": "Bearer ${env:APIFY_TOKEN}"
       }
+    },
+    "podcast-transcript-api": {
+      "url": "https://mcp.apify.com/?tools=catalyst-labs/podcast-transcript-api",
+      "headers": {
+        "Authorization": "Bearer ${env:APIFY_TOKEN}"
+      }
     }
   }
 }

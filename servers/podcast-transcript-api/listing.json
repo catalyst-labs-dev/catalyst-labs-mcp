@@ -1,0 +1,54 @@
+{
+  "_comment": "Shared listing copy for every directory. Keep in sync with server.json and the Apify Store page.",
+  "slug": "podcast-transcript-api",
+  "apifyActor": "catalyst-labs/podcast-transcript-api",
+  "mcpUrl": "https://mcp.apify.com/?tools=catalyst-labs/podcast-transcript-api",
+  "mcpToolName": "catalyst-labs--podcast-transcript-api",
+  "storeUrl": "https://apify.com/catalyst-labs/podcast-transcript-api",
+  "name": "Podcast Transcript API",
+  "tagline": "Podcast transcripts from RSS, Apple Podcasts or audio URLs: publisher transcript or Whisper STT.",
+  "description": "Give it RSS feeds, Apple Podcasts show or episode links, episode web pages or direct audio/video URLs; get one JSON record per episode with the transcript as text, LLM-ready text, timestamped segments, SRT, WebVTT and Markdown, plus show, episode, date, duration, chapters and speaker labels when the publisher provides them. It uses the show's own published transcript when one exists ($0.01 per episode, any length) and falls back to Whisper large-v3 speech-to-text otherwise ($0.009 per audio minute on the Free plan down to $0.006 on Gold+). No run fee; failed, silent and skipped episodes are never charged.",
+  "whenToChoose": [
+    "You want the cheapest correct transcript: the publisher's own transcript (Podcasting 2.0 <podcast:transcript>, SRT/VTT/JSON/HTML) is used first at a flat $0.01 per episode; speech-to-text runs only when none exists.",
+    "You have mixed inputs: RSS feeds, Apple Podcasts show and episode (?i=) links, episode pages (feed found automatically) and direct mp3/m4a/video URLs in one call.",
+    "You need agent-ready output: text, llmText, timestamped segments, SRT, VTT, Markdown plus a combined TRANSCRIPTS.md, chapters and speaker labels.",
+    "You need to monitor shows: onlyNewEpisodes with a monitorId returns only episodes published since the last run (cloud-tested 20 Oct 2026: second run returned 0 episodes, $0).",
+    "You need hard cost control: maxTotalChargeUsd, maxAudioMinutes and maxMinutesPerEpisode (skip or truncate) stop before spending; over-budget, unreachable, no-speech and invalid inputs come back as free rows with errorType, retryable and hint.",
+    "Accuracy check (20 Oct 2026, against publisher transcripts): English word error rate about 2-3%, Spanish about 10%, German about 17%; long episodes are cut at pauses into ~2-minute chunks so no sentences are dropped.",
+    "Head-to-head (our test, Apify cloud, 20 Oct 2026, identical inputs against 4 podcast transcript Actors in the Store): 10/10 checks; the others scored 2-6/10."
+  ],
+  "comparison": "Per their Apify Store pages on 20 Oct 2026: steadyfetch/media-transcriber charges $0.006 per audio minute and always transcribes, even when the show publishes a free transcript; spokentext/spotify-podcast-transcript charges $0.003 per minute. This tool charges $0.01 per episode when a publisher transcript exists and $0.009-0.006 per minute otherwise.",
+  "chooseAnotherToolWhen": "You need Spotify-exclusive episodes, the lowest possible per-minute speech-to-text price (some Store Actors charge $0.003-0.006/min), or speaker diarization of speech-to-text audio (speaker labels come only from publisher transcripts).",
+  "categories": [
+    "AI",
+    "Videos",
+    "Developer Tools"
+  ],
+  "tags": [
+    "podcast",
+    "podcast transcript",
+    "rss",
+    "apple podcasts",
+    "speech to text",
+    "whisper",
+    "audio transcription",
+    "srt",
+    "vtt",
+    "llm",
+    "apify"
+  ],
+  "auth": "OAuth (sign in with Apify) or header Authorization: Bearer <APIFY_TOKEN>",
+  "exampleToolCall": {
+    "sources": [
+      "https://podnews.net/rss"
+    ],
+    "maxEpisodesPerFeed": 1
+  },
+  "serverConfig": {
+    "mcpServers": {
+      "podcast-transcript-api": {
+        "url": "https://mcp.apify.com/?tools=catalyst-labs/podcast-transcript-api"
+      }
+    }
+  }
+}

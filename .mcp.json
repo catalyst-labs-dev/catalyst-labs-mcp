@@ -8,6 +8,9 @@
     },
     "youtube-transcript-api": {
       "url": "https://mcp.apify.com/?tools=catalyst-labs/youtube-transcript-api"
+    },
+    "podcast-transcript-api": {
+      "url": "https://mcp.apify.com/?tools=catalyst-labs/podcast-transcript-api"
     }
   }
 }
