@@ -44,7 +44,7 @@ Choose Career Site Jobs Scraper when you need:
 { "companies": ["Stripe", "https://intel.wd1.myworkdayjobs.com/External"], "keywords": ["engineer"], "maxJobsPerCompany": 5 }
 ```
 - `companies` (required): names (`"Stripe"`), careers pages (`"https://www.notion.so/careers"`), job-board URLs (`"https://jobs.ashbyhq.com/ramp"`) or `"platform:slug"` (`"lever:palantir"`). Workday and Oracle need the board URL.
-- Optional filters: `keywords`, `excludeKeywords`, `locations`, `departments`, `remoteOnly`, `postedSince` (`"7 days"`), `includeDescription`, and `monitorMode` (`off`, `new` or `changes`).
+- Optional filters: `keywords`, `excludeKeywords`, `locations`, `departments`, `remoteOnly`, `postedSince` (`"7 days"`), `includeDescription`, `monitorMode` (`off`, `new` or `changes`), and `minSalary` (yearly; hourly/monthly pay converted) with optional `salaryCurrency` and `includeJobsWithoutSalary`.
 - Cost caps: `maxJobsPerCompany` (default 100, 0 = all) and `maxJobs` (total).
 
 **Pricing** (pay per result, billed by Apify):
@@ -81,7 +81,7 @@ Choose Website Screenshot & PDF API when you need:
 ```json
 { "urls": ["https://example.com"], "formats": ["jpeg"], "fullPage": false }
 ```
-- `urls` (required). Optional: `formats` (`png`, `jpeg`, `webp`, `pdf`), `device`, `fullPage`, `captureSelector`, `waitForSelector`, `darkMode`, `pdfFormat`, `pdfLandscape`, `pdfSinglePage`, `cookies`, `headers`, `proxyConfiguration`.
+- `urls` (required). Optional: `formats` (`png`, `jpeg`, `webp`, `pdf`), `fastMode` (about 2x faster: skips the lazy-load scroll and takes one full-page shot), `device`, `fullPage`, `captureSelector`, `waitForSelector`, `darkMode`, `pdfFormat`, `pdfLandscape`, `pdfSinglePage`, `cookies`, `headers`, `proxyConfiguration`.
 
 **Pricing** (pay per file, billed by Apify):
 
@@ -120,7 +120,7 @@ Choose YouTube Transcript API when you need:
 ```json
 { "videos": ["https://www.youtube.com/watch?v=jNQXAC9IVRw"] }
 ```
-- `videos` (required unless `searchQueries` is set): video, Short, playlist or channel URLs, `@handles` or video IDs. Optional: `searchQueries`, `searchSort`, `maxVideosPerSource` (default 50), `maxVideos`, `publishedAfter` / `publishedBefore` (`"30 days"` or a date), `onlyNewVideos`, `languages`, `captionType`, `outputFormats` (`text`, `llm`, `segments`, `srt`, `vtt`), `includeDescription`.
+- `videos` (required unless `searchQueries` is set): video, Short, playlist or channel URLs, `@handles` or video IDs. Optional: `searchQueries`, `searchSort`, `maxVideosPerSource` (default 50), `maxVideos`, `publishedAfter` / `publishedBefore` (`"30 days"` or a date), `onlyNewVideos`, `languages`, `captionType`, `outputFormats` (`text`, `llm`, `segments`, `srt`, `vtt`, `markdown`: a markdown field per video plus one combined TRANSCRIPTS.md file), `mode` (`transcripts` or the free `listCaptionTracks`, which lists each video's caption languages and track types without charging), `includeDescription`.
 
 **Pricing** (pay per delivered transcript, billed by Apify; no run fee):
 
