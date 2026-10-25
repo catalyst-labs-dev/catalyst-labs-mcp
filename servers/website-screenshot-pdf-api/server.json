@@ -3,7 +3,7 @@
   "name": "io.github.catalyst-labs-dev/website-screenshot-pdf-api",
   "title": "Website Screenshot & PDF API",
   "description": "Full-page screenshots/PDFs, cookie walls removed; blocked or failed pages never charged.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "websiteUrl": "https://apify.com/catalyst-labs/website-screenshot-pdf-api",
   "repository": {
     "url": "https://github.com/catalyst-labs-dev/catalyst-labs-mcp",

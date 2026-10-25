@@ -3,7 +3,7 @@
   "name": "io.github.catalyst-labs-dev/youtube-transcript-api",
   "title": "YouTube Transcript API",
   "description": "YouTube transcripts in bulk: 12/12 in our test, zero failures charged; human vs auto flagged.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "websiteUrl": "https://apify.com/catalyst-labs/youtube-transcript-api",
   "repository": {
     "url": "https://github.com/catalyst-labs-dev/catalyst-labs-mcp",

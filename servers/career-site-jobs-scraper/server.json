@@ -3,7 +3,7 @@
   "name": "io.github.catalyst-labs-dev/career-site-jobs-scraper",
   "title": "Career Site Jobs Scraper",
   "description": "Live jobs from companies you name, 17 ATS, one schema; misses never charged.",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "websiteUrl": "https://apify.com/catalyst-labs/career-site-jobs-scraper",
   "repository": {
     "url": "https://github.com/catalyst-labs-dev/catalyst-labs-mcp",

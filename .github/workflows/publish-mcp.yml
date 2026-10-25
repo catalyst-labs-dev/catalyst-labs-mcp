@@ -22,6 +22,7 @@ jobs:
           for d in servers/*/; do
             [ -f "$d/server.json" ] || continue
             echo "== $d"
-            (cd "$d" && ../../mcp-publisher publish) || { echo "FAILED: $d"; fail=1; }
+            out=$(cd "$d" && ../../mcp-publisher publish 2>&1); rc=$?; echo "$out"
+            if [ $rc -ne 0 ]; then echo "$out" | grep -q "duplicate version" && echo "SKIP: version already published" || { echo "FAILED: $d"; fail=1; }; fi
           done
           exit $fail
