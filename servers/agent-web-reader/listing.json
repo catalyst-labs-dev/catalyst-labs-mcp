@@ -1,0 +1,55 @@
+{
+  "_comment": "Shared listing copy for every directory. Keep in sync with server.json and the Apify Store page.",
+  "slug": "agent-web-reader",
+  "apifyActor": "catalyst-labs/agent-web-reader",
+  "mcpUrl": "https://mcp.apify.com/?tools=catalyst-labs/agent-web-reader",
+  "mcpToolName": "catalyst-labs--agent-web-reader",
+  "standbyUrl": "https://catalyst-labs--agent-web-reader.apify.actor/",
+  "storeUrl": "https://apify.com/catalyst-labs/agent-web-reader",
+  "name": "Agent Web Reader",
+  "tagline": "Web search or URLs in, clean markdown out: one row per page with source URL, title, status and error reason.",
+  "description": "Give it a search query and/or URLs (HTML or PDF); get one flat JSON row per page with main-content markdown, title, source URL, fetched time, status and errorCode. maxCharsPerResult token budget, summary mode, per-URL error rows that never fail the call, Standby mode for 2-5 s warm responses. Pay per event via Apify: $0.003 per search, $0.002 per page read, $0.001 run start (batch only). Failed URLs are never charged.",
+  "whenToChoose": [
+    "You need to answer from the live web with citations: query -> top results read and returned as markdown with url, title and searchRank.",
+    "You need a token budget: maxCharsPerResult cuts at a paragraph boundary and reports totalChars/truncated; outputMode=summary returns a short lead and outline.",
+    "You need reliability: invalid, 404, DNS, timeout, blocked and scanned-PDF URLs come back as error rows with errorCode (not charged) instead of failing the run.",
+    "You need PDFs and HTML through one tool."
+  ],
+  "chooseAnotherToolWhen": "Pages behind logins or paywalls, JavaScript-only apps, whole-site crawls (use apify/website-content-crawler), DOCX/XLSX (use catalyst-labs/document-to-markdown).",
+  "categories": [
+    "AI",
+    "Developer Tools",
+    "Automation"
+  ],
+  "tags": [
+    "web search",
+    "url to markdown",
+    "web scraping",
+    "rag",
+    "llm",
+    "pdf to text",
+    "readability",
+    "mcp",
+    "agent tools",
+    "apify"
+  ],
+  "auth": "OAuth (sign in with Apify) or header Authorization: Bearer <APIFY_TOKEN>",
+  "exampleToolCall": {
+    "query": "what is the model context protocol",
+    "maxResults": 3,
+    "maxCharsPerResult": 4000
+  },
+  "exampleCost": "$0.010 for a query with 3 results",
+  "serverConfig": {
+    "mcpServers": {
+      "agent-web-reader": {
+        "url": "https://mcp.apify.com/?tools=catalyst-labs/agent-web-reader"
+      }
+    }
+  },
+  "smithery": {
+    "publishMethod": "URL (smithery.ai/new).",
+    "qualifiedName": "catalyst-labs-dev/agent-web-reader",
+    "cli": "npx -y @smithery/cli@4.11.1 mcp publish \"https://mcp.apify.com/?tools=catalyst-labs/agent-web-reader\" -n catalyst-labs-dev/agent-web-reader"
+  }
+}

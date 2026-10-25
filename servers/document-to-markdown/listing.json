@@ -1,0 +1,56 @@
+{
+  "_comment": "Shared listing copy for every directory. Keep in sync with server.json and the Apify Store page.",
+  "slug": "document-to-markdown",
+  "apifyActor": "catalyst-labs/document-to-markdown",
+  "mcpUrl": "https://mcp.apify.com/?tools=catalyst-labs/document-to-markdown",
+  "mcpToolName": "catalyst-labs--document-to-markdown",
+  "standbyUrl": "https://catalyst-labs--document-to-markdown.apify.actor/",
+  "storeUrl": "https://apify.com/catalyst-labs/document-to-markdown",
+  "name": "Document to Markdown",
+  "tagline": "PDF, Word, Excel, CSV and HTML files to LLM-ready markdown with tables, page markers and optional RAG chunks.",
+  "description": "Give it document URLs (or base64 files); get one JSON row per document with markdown (headings, lists, GFM tables from DOCX/XLSX), <!-- page N --> markers for PDFs, optional chunks with heading and page, page counts, status and errorCode. Type detected from file bytes. Pay per event via Apify: $0.001 per page (PDF page, or 3,000 characters of other formats), $0.001 run start (batch only). Failed documents are never charged.",
+  "whenToChoose": [
+    "You need to read PDFs, Word or Excel files an agent found by URL.",
+    "You need RAG chunks with heading and page number per chunk, sized by chunkSize/chunkOverlap.",
+    "You need a token budget: maxChars and pages limit output and cost.",
+    "You need clear failures: NO_TEXT_LAYER (scanned PDF), ENCRYPTED, UNSUPPORTED_TYPE, HTTP errors come back as free error rows."
+  ],
+  "chooseAnotherToolWhen": "Scanned PDFs that need OCR, PowerPoint files, pixel-accurate PDF table extraction (PDF tables come out as text lines).",
+  "categories": [
+    "AI",
+    "Developer Tools",
+    "Automation"
+  ],
+  "tags": [
+    "pdf to markdown",
+    "docx to markdown",
+    "excel to markdown",
+    "document parser",
+    "rag",
+    "chunking",
+    "llm",
+    "pdf extraction",
+    "mcp",
+    "apify"
+  ],
+  "auth": "OAuth (sign in with Apify) or header Authorization: Bearer <APIFY_TOKEN>",
+  "exampleToolCall": {
+    "urls": [
+      "https://www.irs.gov/pub/irs-pdf/fw9.pdf"
+    ],
+    "maxChars": 8000
+  },
+  "exampleCost": "$0.007 for the 6-page example PDF",
+  "serverConfig": {
+    "mcpServers": {
+      "document-to-markdown": {
+        "url": "https://mcp.apify.com/?tools=catalyst-labs/document-to-markdown"
+      }
+    }
+  },
+  "smithery": {
+    "publishMethod": "URL (smithery.ai/new).",
+    "qualifiedName": "catalyst-labs-dev/document-to-markdown",
+    "cli": "npx -y @smithery/cli@4.11.1 mcp publish \"https://mcp.apify.com/?tools=catalyst-labs/document-to-markdown\" -n catalyst-labs-dev/document-to-markdown"
+  }
+}

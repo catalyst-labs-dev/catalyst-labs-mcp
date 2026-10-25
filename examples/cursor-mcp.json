@@ -23,6 +23,24 @@
       "headers": {
         "Authorization": "Bearer ${env:APIFY_TOKEN}"
       }
+    },
+    "agent-web-reader": {
+      "url": "https://mcp.apify.com/?tools=catalyst-labs/agent-web-reader",
+      "headers": {
+        "Authorization": "Bearer ${env:APIFY_TOKEN}"
+      }
+    },
+    "document-to-markdown": {
+      "url": "https://mcp.apify.com/?tools=catalyst-labs/document-to-markdown",
+      "headers": {
+        "Authorization": "Bearer ${env:APIFY_TOKEN}"
+      }
+    },
+    "google-trends-api": {
+      "url": "https://mcp.apify.com/?tools=catalyst-labs/google-trends-api",
+      "headers": {
+        "Authorization": "Bearer ${env:APIFY_TOKEN}"
+      }
     }
   }
 }

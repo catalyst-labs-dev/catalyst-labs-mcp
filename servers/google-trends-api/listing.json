@@ -1,0 +1,59 @@
+{
+  "_comment": "Shared listing copy for every directory. Keep in sync with server.json and the Apify Store page.",
+  "slug": "google-trends-api",
+  "apifyActor": "catalyst-labs/google-trends-api",
+  "mcpUrl": "https://mcp.apify.com/?tools=catalyst-labs/google-trends-api",
+  "mcpToolName": "catalyst-labs--google-trends-api",
+  "standbyUrl": "https://catalyst-labs--google-trends-api.apify.actor/",
+  "storeUrl": "https://apify.com/catalyst-labs/google-trends-api",
+  "name": "Google Trends API",
+  "tagline": "Google Trends as clean JSON: interest over time, by region, related and rising queries and topics, with a trend summary.",
+  "description": "Give it up to 25 keywords; get one JSON row per keyword with interestOverTime, a summary (latest, peak, peakDate, average, changePct, trend), interestByRegion, relatedQueries and relatedTopics (top and rising), the matching Google Trends sourceUrl, status and errorCode. Retries across IPs with honest RATE_LIMITED errors. Pay per event via Apify: $0.0025 per keyword, $0.001 run start (batch only). Failed keywords are never charged.",
+  "whenToChoose": [
+    "You need to know if interest in a topic is rising, falling or flat: summary.trend and changePct are computed for you.",
+    "You need comparisons on one 0-100 scale (compare mode, groups of 5).",
+    "You need rising related searches for content or SEO ideas.",
+    "You need small outputs: outputMode=summary drops the timeline points."
+  ],
+  "chooseAnotherToolWhen": "Absolute search volumes or CPC (Trends is relative 0-100), real-time trending-now lists.",
+  "categories": [
+    "AI",
+    "SEO Tools",
+    "Developer Tools"
+  ],
+  "tags": [
+    "google trends",
+    "trends api",
+    "search trends",
+    "keyword research",
+    "related queries",
+    "seo",
+    "market research",
+    "llm",
+    "mcp",
+    "apify"
+  ],
+  "auth": "OAuth (sign in with Apify) or header Authorization: Bearer <APIFY_TOKEN>",
+  "exampleToolCall": {
+    "keywords": [
+      "chatgpt",
+      "claude"
+    ],
+    "geo": "US",
+    "timeRange": "90d",
+    "outputMode": "summary"
+  },
+  "exampleCost": "$0.006 for 2 keywords",
+  "serverConfig": {
+    "mcpServers": {
+      "google-trends-api": {
+        "url": "https://mcp.apify.com/?tools=catalyst-labs/google-trends-api"
+      }
+    }
+  },
+  "smithery": {
+    "publishMethod": "URL (smithery.ai/new).",
+    "qualifiedName": "catalyst-labs-dev/google-trends-api",
+    "cli": "npx -y @smithery/cli@4.11.1 mcp publish \"https://mcp.apify.com/?tools=catalyst-labs/google-trends-api\" -n catalyst-labs-dev/google-trends-api"
+  }
+}

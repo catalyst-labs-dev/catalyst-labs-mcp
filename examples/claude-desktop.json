@@ -51,6 +51,45 @@
       "env": {
         "APIFY_TOKEN": "<your-apify-token>"
       }
+    },
+    "agent-web-reader": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://mcp.apify.com/?tools=catalyst-labs/agent-web-reader",
+        "--header",
+        "Authorization: Bearer ${APIFY_TOKEN}"
+      ],
+      "env": {
+        "APIFY_TOKEN": "<your-apify-token>"
+      }
+    },
+    "document-to-markdown": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://mcp.apify.com/?tools=catalyst-labs/document-to-markdown",
+        "--header",
+        "Authorization: Bearer ${APIFY_TOKEN}"
+      ],
+      "env": {
+        "APIFY_TOKEN": "<your-apify-token>"
+      }
+    },
+    "google-trends-api": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://mcp.apify.com/?tools=catalyst-labs/google-trends-api",
+        "--header",
+        "Authorization: Bearer ${APIFY_TOKEN}"
+      ],
+      "env": {
+        "APIFY_TOKEN": "<your-apify-token>"
+      }
     }
   }
 }

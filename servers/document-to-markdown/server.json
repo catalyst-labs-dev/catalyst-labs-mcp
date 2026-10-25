@@ -1,0 +1,35 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.catalyst-labs-dev/document-to-markdown",
+  "title": "Document to Markdown",
+  "description": "PDF, DOCX, XLSX, CSV, HTML to clean markdown with page numbers and RAG chunks.",
+  "version": "1.0.0",
+  "websiteUrl": "https://apify.com/catalyst-labs/document-to-markdown",
+  "repository": {
+    "url": "https://github.com/catalyst-labs-dev/catalyst-labs-mcp",
+    "source": "github",
+    "subfolder": "servers/document-to-markdown"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://mcp.apify.com/?tools=catalyst-labs/document-to-markdown",
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "Apify API token as 'Bearer <token>' (console.apify.com/settings/integrations). Optional if your MCP client supports OAuth: the server returns 401 with OAuth discovery and you sign in with Apify instead.",
+          "value": "Bearer {apify_token}",
+          "isRequired": false,
+          "isSecret": true,
+          "variables": {
+            "apify_token": {
+              "description": "Your Apify API token",
+              "isRequired": true,
+              "isSecret": true
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
