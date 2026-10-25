@@ -1,0 +1,41 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.catalyst-labs-dev/local-government-decision-lookup",
+  "title": "Local Government Decision Lookup & Fact Check",
+  "description": "Fact-check Iowa city council & county board votes against official minutes, or look up by address.",
+  "version": "1.0.0",
+  "websiteUrl": "https://apify.com/catalyst-labs/local-government-decision-lookup",
+  "repository": {
+    "url": "https://github.com/catalyst-labs-dev/catalyst-labs-mcp",
+    "source": "github",
+    "subfolder": "servers/local-government-decision-lookup"
+  },
+  "icons": [
+    {
+      "src": "https://apify-image-uploads-prod.s3.us-east-1.amazonaws.com/1ydY5YsykVmyMWtQX-actor-3bd7Pfnzvdb8C9NbR-wXPWRFZrFG-IMG_9676.png",
+      "mimeType": "image/png"
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://mcp.apify.com/?tools=catalyst-labs/local-government-decision-lookup",
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "Apify API token as 'Bearer <token>' (console.apify.com/settings/integrations). Optional if your MCP client supports OAuth: the server returns 401 with OAuth discovery and you sign in with Apify instead.",
+          "value": "Bearer {apify_token}",
+          "isRequired": false,
+          "isSecret": true,
+          "variables": {
+            "apify_token": {
+              "description": "Your Apify API token",
+              "isRequired": true,
+              "isSecret": true
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

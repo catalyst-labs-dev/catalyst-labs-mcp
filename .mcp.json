@@ -11,6 +11,9 @@
     },
     "podcast-transcript-api": {
       "url": "https://mcp.apify.com/?tools=catalyst-labs/podcast-transcript-api"
+    },
+    "local-government-decision-lookup": {
+      "url": "https://mcp.apify.com/?tools=catalyst-labs/local-government-decision-lookup"
     }
   }
 }
