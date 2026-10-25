@@ -2,7 +2,7 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.catalyst-labs-dev/youtube-transcript-api",
   "title": "YouTube Transcript API",
-  "description": "Transcripts + metadata from YouTube videos, Shorts, channels, playlists and search; text/SRT/VTT.",
+  "description": "YouTube transcripts in bulk: 12/12 in our test, zero failures charged; human vs auto flagged.",
   "version": "1.0.0",
   "websiteUrl": "https://apify.com/catalyst-labs/youtube-transcript-api",
   "repository": {

@@ -7,7 +7,7 @@
   "storeUrl": "https://apify.com/catalyst-labs/podcast-transcript-api",
   "name": "Podcast Transcript API",
   "tagline": "Podcast transcripts from RSS, Apple Podcasts or audio URLs: publisher transcript or Whisper STT.",
-  "description": "Give it RSS feeds, Apple Podcasts show or episode links, episode web pages or direct audio/video URLs; get one JSON record per episode with the transcript as text, LLM-ready text, timestamped segments, SRT, WebVTT and Markdown, plus show, episode, date, duration, chapters and speaker labels when the publisher provides them. It uses the show's own published transcript when one exists ($0.01 per episode, any length) and falls back to Whisper large-v3 speech-to-text otherwise ($0.009 per audio minute on the Free plan down to $0.006 on Gold+). No run fee; failed, silent and skipped episodes are never charged.",
+  "description": "Podcast transcripts from RSS feeds, Apple Podcasts links, episode pages or audio URLs. Uses the publisher's own transcript for a flat $0.01 when one exists, Whisper large-v3 otherwise ($0.009/min). Budget checked before each episode, so it never overspends. Text, segments, SRT, VTT, MD.",
   "whenToChoose": [
     "You want the cheapest correct transcript: the publisher's own transcript (Podcasting 2.0 <podcast:transcript>, SRT/VTT/JSON/HTML) is used first at a flat $0.01 per episode; speech-to-text runs only when none exists.",
     "You have mixed inputs: RSS feeds, Apple Podcasts show and episode (?i=) links, episode pages (feed found automatically) and direct mp3/m4a/video URLs in one call.",

@@ -2,7 +2,7 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.catalyst-labs-dev/agent-web-reader",
   "title": "Agent Web Reader",
-  "description": "Web search + URL/PDF to clean markdown for LLMs; per-URL status, token budget, fast.",
+  "description": "Search + read the web for $0.002/page; failed URLs free; per-URL errors never fail the call.",
   "version": "1.0.0",
   "websiteUrl": "https://apify.com/catalyst-labs/agent-web-reader",
   "repository": {

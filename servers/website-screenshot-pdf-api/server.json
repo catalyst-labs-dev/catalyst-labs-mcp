@@ -2,7 +2,7 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.catalyst-labs-dev/website-screenshot-pdf-api",
   "title": "Website Screenshot & PDF API",
-  "description": "Full-page screenshots (PNG/JPEG/WebP) and PDFs of any URL, with cookie banners removed.",
+  "description": "Full-page screenshots/PDFs, cookie walls removed; blocked or failed pages never charged.",
   "version": "1.0.0",
   "websiteUrl": "https://apify.com/catalyst-labs/website-screenshot-pdf-api",
   "repository": {

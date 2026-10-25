@@ -2,7 +2,7 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.catalyst-labs-dev/google-trends-api",
   "title": "Google Trends API",
-  "description": "Google Trends interest over time, by region, related queries/topics as JSON for agents.",
+  "description": "Google Trends JSON + trend summary, $0.0025/keyword; rate-limited keywords never charged.",
   "version": "1.0.0",
   "websiteUrl": "https://apify.com/catalyst-labs/google-trends-api",
   "repository": {

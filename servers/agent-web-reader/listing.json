@@ -8,7 +8,7 @@
   "storeUrl": "https://apify.com/catalyst-labs/agent-web-reader",
   "name": "Agent Web Reader",
   "tagline": "Web search or URLs in, clean markdown out: one row per page with source URL, title, status and error reason.",
-  "description": "Give it a search query and/or URLs (HTML or PDF); get one flat JSON row per page with main-content markdown, title, source URL, fetched time, status and errorCode. maxCharsPerResult token budget, summary mode, per-URL error rows that never fail the call, Standby mode for 2-5 s warm responses. Pay per event via Apify: $0.003 per search, $0.002 per page read, $0.001 run start (batch only). Failed URLs are never charged.",
+  "description": "Web search or URLs in, clean markdown out, one JSON row per page with source URL, title and status. $0.002 per page, $0.003 per search; failed URLs never charged. Token budget per result, HTML and PDF, errors returned as rows instead of crashing the call. Built for agents.",
   "whenToChoose": [
     "You need to answer from the live web with citations: query -> top results read and returned as markdown with url, title and searchRank.",
     "You need a token budget: maxCharsPerResult cuts at a paragraph boundary and reports totalChars/truncated; outputMode=summary returns a short lead and outline.",

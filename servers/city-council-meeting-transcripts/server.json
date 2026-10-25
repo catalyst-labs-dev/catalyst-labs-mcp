@@ -2,7 +2,7 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.catalyst-labs-dev/city-council-meeting-transcripts",
   "title": "City Council & Public Meeting Transcripts",
-  "description": "Timestamped city council and county board meeting transcripts with agenda items and votes.",
+  "description": "Council/county meeting transcripts with agenda timestamps + official votes, $0.008/audio min.",
   "version": "1.0.0",
   "websiteUrl": "https://apify.com/catalyst-labs/city-council-meeting-transcripts",
   "repository": {

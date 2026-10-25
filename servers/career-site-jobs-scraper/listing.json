@@ -7,7 +7,7 @@
   "storeUrl": "https://apify.com/catalyst-labs/career-site-jobs-scraper",
   "name": "Career Site Jobs Scraper",
   "tagline": "Live open jobs from the career sites of companies you name (Workday, Greenhouse, Lever +14 ATS).",
-  "description": "Give it company names, careers-page URLs or job-board links; get every open job as normalized JSON: title, department, location, city, ISO country code, remote/hybrid/onsite, seniority, yearly salary range, posted date, job and apply URLs. Reads the employer's own ATS live (Workday, Greenhouse, Lever, Ashby, SmartRecruiters, Oracle, Workable, Recruitee, Personio, BambooHR, Breezy, Teamtailor, Gem, Rippling, Pinpoint, Jobvite, JazzHR). Verifies company matches and can return only new and closed jobs for monitoring. Pay per result via Apify: $0.01 per run + $0.008 per job (Free plan), lower on paid plans; misses are never charged.",
+  "description": "Live open jobs from the career sites of companies you name, on 17 ATS (Workday, Greenhouse, Lever, Ashby, Oracle\u2026), in one schema with yearly salary, remote and apply URL. Not-found companies and errors never charged. Feed of new and closed jobs.",
   "whenToChoose": [
     "You need open jobs at specific companies you name (names, careers-page URLs or job-board URLs), in one call, across 17 ATS in one normalized schema.",
     "You need live data: each run reads the employer's own ATS at call time, with no cache or database in between.",

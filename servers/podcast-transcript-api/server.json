@@ -2,7 +2,7 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.catalyst-labs-dev/podcast-transcript-api",
   "title": "Podcast Transcript API",
-  "description": "Podcast transcripts from RSS, Apple Podcasts or audio URLs: publisher transcript or Whisper STT.",
+  "description": "Podcast transcripts: publisher's own for $0.01, else Whisper; budget-capped, never overspends.",
   "version": "1.0.0",
   "websiteUrl": "https://apify.com/catalyst-labs/podcast-transcript-api",
   "repository": {

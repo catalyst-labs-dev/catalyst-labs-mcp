@@ -8,7 +8,7 @@
   "sourceRepo": "https://github.com/catalyst-labs-dev/local-government-decision-lookup",
   "name": "Local Government Decision Lookup & Fact Check",
   "tagline": "Fact-check Iowa city council & county board votes against official minutes, or look up by address.",
-  "description": "Give it a claim ('Sioux City approved the Flock amendment 4-1, Rayford voted no'), an address or a topic. It returns the matching recorded city council or county board decisions with outcome, vote tally, named no and abstain votes, dollar amount, the official minutes link and the citizenwire.org page, plus a verdict for claims: supported, contradicted or no_record. It never guesses: weak or ambiguous matches return no_record. Covers 21 Iowa governments (Des Moines, Polk County, Ankeny, Waukee, Urbandale, Sioux City, Coralville and more), Jan to Oct 2026, from Citizen Wire's records of the official minutes (CC BY 4.0). Every response states the coverage. $0.005 per answered lookup. Out-of-coverage places are free. Standby HTTP mode answers in under 1 s.",
+  "description": "Fact-check a city council or county board claim against official minutes. Returns supported, contradicted or no_record, with tally, no voters, amount and source link. It never guesses. $0.005 per lookup; uncovered places free. 21 Iowa governments.",
   "whenToChoose": [
     "You must verify a statement about a local vote before repeating it.",
     "You need who voted no on a council item, with a source link.",

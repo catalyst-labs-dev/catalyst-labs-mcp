@@ -7,7 +7,7 @@
   "storeUrl": "https://apify.com/catalyst-labs/website-screenshot-pdf-api",
   "name": "Website Screenshot & PDF API",
   "tagline": "Full-page screenshots (PNG/JPEG/WebP) and PDFs of any URL, with cookie banners removed.",
-  "description": "Give it one URL or thousands; get full-page or viewport screenshots (PNG, JPEG, WebP) and PDFs, each with a direct fileUrl, width/height, title and status. Runs real Chrome: removes cookie banners, loads lazy images, fixes sticky headers, hides popups, renders emoji and CJK text. Element capture, wait-for-selector, dark mode, custom CSS, headers and cookies. Pay per file via Apify: $0.01 per run + $0.008 per screenshot (Free plan, down to $0.005) and $0.012 per PDF; failures are never charged.",
+  "description": "Full-page screenshots (PNG, JPEG, WebP) and PDFs of any URL, in bulk, with cookie banners removed and lazy images loaded. Failed, blocked or blank pages never charged and come back with a reason and fix hint. Desktop, tablet and mobile. Agent-callable via MCP.",
   "whenToChoose": [
     "You need a picture or PDF of a public web page in one call: PNG, JPEG, WebP and PDF from the same run, desktop, laptop, tablet or mobile (iPhone 3x) presets or a custom viewport.",
     "You need clean captures: cookie banners clicked away on 30+ consent platforms plus 'Accept' text in 30+ languages, lazy images loaded, sticky headers shown once, chat widgets and popups hidden.",

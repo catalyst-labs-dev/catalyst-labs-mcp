@@ -8,7 +8,7 @@
   "storeUrl": "https://apify.com/catalyst-labs/document-to-markdown",
   "name": "Document to Markdown",
   "tagline": "PDF, Word, Excel, CSV and HTML files to LLM-ready markdown with tables, page markers and optional RAG chunks.",
-  "description": "Give it document URLs (or base64 files); get one JSON row per document with markdown (headings, lists, GFM tables from DOCX/XLSX), <!-- page N --> markers for PDFs, optional chunks with heading and page, page counts, status and errorCode. Type detected from file bytes. Pay per event via Apify: $0.001 per page (PDF page, or 3,000 characters of other formats), $0.001 run start (batch only). Failed documents are never charged.",
+  "description": "PDF, Word, Excel, CSV and HTML to clean markdown for agents and RAG: tables kept, PDF page markers, optional chunks with heading and page. $0.001 per page; failed or scanned files never charged. One row per document with status and error reason.",
   "whenToChoose": [
     "You need to read PDFs, Word or Excel files an agent found by URL.",
     "You need RAG chunks with heading and page number per chunk, sized by chunkSize/chunkOverlap.",
