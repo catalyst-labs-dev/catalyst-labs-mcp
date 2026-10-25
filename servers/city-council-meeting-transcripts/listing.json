@@ -1,0 +1,25 @@
+{
+  "_comment": "Shared listing copy for every directory. Keep in sync with server.json and the Apify Store page.",
+  "slug": "city-council-meeting-transcripts",
+  "apifyActor": "catalyst-labs/city-council-meeting-transcripts",
+  "mcpUrl": "https://mcp.apify.com/?tools=catalyst-labs/city-council-meeting-transcripts",
+  "mcpToolName": "catalyst-labs--city-council-meeting-transcripts",
+  "storeUrl": "https://apify.com/catalyst-labs/city-council-meeting-transcripts",
+  "name": "City Council & Public Meeting Transcripts",
+  "tagline": "Timestamped city council and county board meeting transcripts with agenda items and votes.",
+  "description": "Give it a city or county meeting portal (Granicus, Swagit, Legistar) or a YouTube meeting video and get timestamped transcripts of council, county board and planning meetings. Optional extras: start and end times for each agenda item with video links, official votes from Legistar or the minutes, keyword alerts, a short verified meeting digest, and monitoring that returns only new meetings. Pricing: $0.008 per transcribed minute, $0.002 per meeting in list-only mode, $0.05 each for agenda timestamps or a digest. Meetings with no video or failed recordings are never charged.",
+  "categories": [
+    "AI",
+    "Videos",
+    "Agents"
+  ],
+  "tags": [
+    "city council",
+    "local government",
+    "meeting transcripts",
+    "granicus",
+    "legistar",
+    "civic",
+    "journalism"
+  ]
+}
