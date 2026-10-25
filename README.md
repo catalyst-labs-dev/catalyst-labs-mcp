@@ -6,6 +6,14 @@ Dependable tools for AI agents, built by **Catalyst Labs** and hosted on [Apify]
 
 **Website:** https://catalyst-labs-dev.github.io/ · **Benchmarks (our own tests, Oct 18, 2026):** [benchmarks/](benchmarks/README.md) · **Free n8n workflows:** [catalyst-labs-dev/n8n-templates](https://github.com/catalyst-labs-dev/n8n-templates)
 
+## Run it yourself (stdio, npm)
+
+Prefer to run locally? [`packages/mcp`](packages/mcp) is an installable stdio server with the same 7 tools, using your own Apify token:
+
+```json
+{ "mcpServers": { "catalyst-labs": { "command": "npx", "args": ["-y", "catalyst-labs-mcp"], "env": { "APIFY_TOKEN": "apify_api_..." } } } }
+```
+
 ## Tools
 
 Every tool: structured JSON rows, a published price per use, **failed items never charged**, and a clear `status`/`errorCode` instead of a silent empty result or a guess.

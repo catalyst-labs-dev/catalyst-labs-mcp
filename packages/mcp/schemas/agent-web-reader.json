@@ -1,0 +1,74 @@
+{
+ "type": "object",
+ "properties": {
+  "query": {
+   "title": "Search query",
+   "type": "string",
+   "description": "Web search query. The top `maxResults` results are opened and returned as markdown. Leave empty if you only pass `urls`."
+  },
+  "urls": {
+   "title": "URLs to read",
+   "type": "array",
+   "description": "Pages or PDF links to read directly (max 50). Can be combined with `query`."
+  },
+  "maxResults": {
+   "title": "Search results to read",
+   "type": "integer",
+   "default": 3,
+   "minimum": 1,
+   "maximum": 10,
+   "description": "How many search results to open (1-10). Default 3."
+  },
+  "maxCharsPerResult": {
+   "title": "Max characters per result",
+   "type": "integer",
+   "default": 6000,
+   "minimum": 200,
+   "maximum": 100000,
+   "description": "Token budget: each result's markdown is cut at a paragraph boundary to this many characters (about 4 characters = 1 token). Default 6000 (~1,500 tokens). `totalChars` and `truncated` tell you what was cut."
+  },
+  "outputMode": {
+   "title": "Output mode",
+   "type": "string",
+   "enum": [
+    "markdown",
+    "summary"
+   ],
+   "default": "markdown",
+   "description": "`markdown` returns the main content; `summary` returns a short lead + outline to triage many pages cheaply in tokens. Same price."
+  },
+  "includeLinks": {
+   "title": "Keep hyperlinks",
+   "type": "boolean",
+   "default": false,
+   "description": "Keep `[text](url)` links in the markdown. Off by default to save tokens."
+  },
+  "fullPage": {
+   "title": "Full page (skip main-content extraction)",
+   "type": "boolean",
+   "default": false,
+   "description": "Return the whole page body instead of the extracted main article. Use for list/index pages."
+  },
+  "country": {
+   "title": "Search country",
+   "type": "string",
+   "description": "Optional 2-letter country code for localized search results, e.g. `us`, `gb`, `de`."
+  },
+  "maxPdfPages": {
+   "title": "Max PDF pages",
+   "type": "integer",
+   "default": 50,
+   "minimum": 1,
+   "maximum": 500,
+   "description": "Read at most this many pages of each PDF. Default 50."
+  },
+  "timeoutSecs": {
+   "title": "Per-URL timeout (seconds)",
+   "type": "integer",
+   "default": 15,
+   "minimum": 3,
+   "maximum": 60,
+   "description": "Give up on a URL after this many seconds and return an error row for it (not charged). Default 15."
+  }
+ }
+}

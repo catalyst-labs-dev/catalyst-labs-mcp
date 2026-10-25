@@ -1,0 +1,48 @@
+{
+  "name": "catalyst-labs-mcp",
+  "version": "0.1.0",
+  "description": "Self-run stdio MCP server for Catalyst Labs agent tools: web reader, document-to-markdown, Google Trends, YouTube & podcast transcripts, screenshots/PDF, career-site jobs. Runs on your own Apify token.",
+  "type": "module",
+  "bin": {
+    "catalyst-labs-mcp": "dist/index.js"
+  },
+  "main": "dist/index.js",
+  "files": [
+    "dist",
+    "schemas",
+    "README.md"
+  ],
+  "mcpName": "io.github.catalyst-labs-dev/catalyst-labs-mcp",
+  "scripts": {
+    "build": "tsc",
+    "test": "npm run build && node --test test/"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "apify",
+    "web-scraping",
+    "transcripts",
+    "google-trends",
+    "screenshot",
+    "jobs"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/catalyst-labs-dev/catalyst-labs-mcp.git",
+    "directory": "packages/mcp"
+  },
+  "homepage": "https://github.com/catalyst-labs-dev/catalyst-labs-mcp/tree/main/packages/mcp",
+  "license": "MIT",
+  "author": "Catalyst Labs",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.2"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "typescript": "^7.0.2"
+  }
+}

@@ -1,0 +1,113 @@
+{
+ "type": "object",
+ "properties": {
+  "sources": {
+   "title": "Podcasts, episodes or audio URLs",
+   "type": "array",
+   "minItems": 1,
+   "description": "Podcast RSS feed URLs, Apple Podcasts show or episode links, episode web pages, or direct audio/video file URLs (mp3, m4a, mp4, wav...). Feeds return the newest episodes (see maxEpisodesPerFeed). Spotify and YouTube links are not supported. Example: [\"https://feeds.buzzsprout.com/1.rss\", \"https://podcasts.apple.com/us/podcast/id1584274529\"]"
+  },
+  "maxEpisodesPerFeed": {
+   "title": "Max episodes per feed / show",
+   "type": "integer",
+   "minimum": 0,
+   "default": 3,
+   "description": "Newest N episodes taken from each feed or Apple show link. 0 = all episodes in the feed. Example: 5"
+  },
+  "transcriptMode": {
+   "title": "Transcript source",
+   "type": "string",
+   "default": "auto",
+   "enum": [
+    "auto",
+    "publisherOnly",
+    "speechToText"
+   ],
+   "description": "auto: use the publisher's Podcasting 2.0 transcript ($0.01 per episode) and transcribe only when none exists (per audio minute). publisherOnly: never run speech-to-text. speechToText: always transcribe."
+  },
+  "maxAudioMinutes": {
+   "title": "Max transcribed audio minutes per run",
+   "type": "integer",
+   "minimum": 0,
+   "default": 120,
+   "description": "Hard cap on speech-to-text minutes billed in this run; episodes that would exceed it are skipped (not charged, retryable). 0 = publisher transcripts only. Combine with the run option maxTotalChargeUsd. Example: 300"
+  },
+  "maxMinutesPerEpisode": {
+   "title": "Max minutes per episode",
+   "type": "integer",
+   "minimum": 1,
+   "default": 180,
+   "description": "Episodes longer than this are skipped (not charged), or transcribed only up to this length when truncateLongEpisodes is on. Example: 240"
+  },
+  "truncateLongEpisodes": {
+   "title": "Transcribe the start of long episodes",
+   "type": "boolean",
+   "default": false,
+   "description": "When an episode is longer than maxMinutesPerEpisode, transcribe and bill only its first maxMinutesPerEpisode minutes (record flagged truncated: true) instead of skipping it."
+  },
+  "onlyNewEpisodes": {
+   "title": "Only new episodes (monitor mode)",
+   "type": "boolean",
+   "default": false,
+   "description": "Remember delivered episodes and skip them on later runs (never charged twice). Use with a schedule to get each new episode once."
+  },
+  "monitorId": {
+   "title": "Monitor ID",
+   "type": "string",
+   "description": "Optional name for the onlyNewEpisodes memory, so several schedules can track the same feeds separately. Defaults to the list of sources. Example: \"weekly-news-shows\""
+  },
+  "publishedAfter": {
+   "title": "Published after",
+   "type": "string",
+   "description": "Only episodes published on or after this date (YYYY-MM-DD). Example: \"2026-10-01\""
+  },
+  "titleFilter": {
+   "title": "Episode title contains",
+   "type": "string",
+   "description": "Only episodes whose title contains this text (case-insensitive). Example: \"interview\""
+  },
+  "language": {
+   "title": "Language",
+   "type": "string",
+   "description": "Optional ISO 639-1 code (en, es, de...). Picks the publisher transcript in that language and tells speech-to-text the spoken language. Empty = auto-detect (about 100 languages)."
+  },
+  "vocabulary": {
+   "title": "Names and terms (spelling hints)",
+   "type": "array",
+   "description": "Guest names, brands and jargon passed to speech-to-text so they are spelled right. The show and episode titles are always used. Example: [\"Adam Curry\", \"Podcasting 2.0\", \"Fountain\"]"
+  },
+  "outputFormats": {
+   "title": "Output formats",
+   "type": "array",
+   "items": {
+    "type": "string",
+    "enum": [
+     "text",
+     "segments",
+     "llmText",
+     "srt",
+     "vtt",
+     "markdown"
+    ]
+   },
+   "default": [
+    "text",
+    "segments",
+    "llmText",
+    "srt",
+    "vtt",
+    "markdown"
+   ],
+   "description": "Fields to include per episode: text (paragraphs, speaker-labelled when known), segments (start/end seconds, speaker), llmText (fillers removed), srt, vtt, markdown (also combined in TRANSCRIPTS.md). Same price for any combination."
+  },
+  "includeChapters": {
+   "title": "Include publisher chapters",
+   "type": "boolean",
+   "default": true,
+   "description": "Add the episode's Podcasting 2.0 chapters (start, title) when the feed publishes them. Free."
+  }
+ },
+ "required": [
+  "sources"
+ ]
+}

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+  "name": "io.github.catalyst-labs-dev/catalyst-labs-mcp",
+  "title": "Catalyst Labs MCP (self-run)",
+  "description": "Web reader, doc-to-markdown, Google Trends, YouTube/podcast transcripts, screenshots, career-site jobs.",
+  "repository": { "url": "https://github.com/catalyst-labs-dev/catalyst-labs-mcp", "source": "github", "subfolder": "packages/mcp" },
+  "version": "0.1.0",
+  "packages": [{
+    "registryType": "npm", "identifier": "catalyst-labs-mcp", "version": "0.1.0",
+    "transport": { "type": "stdio" },
+    "environmentVariables": [{ "name": "APIFY_TOKEN", "description": "Your Apify API token", "isRequired": true, "isSecret": true }]
+  }]
+}

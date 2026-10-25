@@ -1,0 +1,107 @@
+{
+ "type": "object",
+ "properties": {
+  "keywords": {
+   "title": "Keywords",
+   "type": "array",
+   "description": "Search terms (max 25). With compare on, each group of up to 5 is fetched together so values are on one shared 0-100 scale."
+  },
+  "geo": {
+   "title": "Location",
+   "type": "string",
+   "description": "Country or region code, e.g. `US`, `GB`, `US-IA`. Empty = worldwide."
+  },
+  "timeRange": {
+   "title": "Time range",
+   "type": "string",
+   "enum": [
+    "1h",
+    "4h",
+    "1d",
+    "7d",
+    "30d",
+    "90d",
+    "12m",
+    "5y",
+    "all"
+   ],
+   "default": "12m",
+   "description": "Window: 1h, 4h, 1d, 7d, 30d, 90d, 12m (default), 5y, all (2004-). Custom: \"YYYY-MM-DD YYYY-MM-DD\" via API."
+  },
+  "sections": {
+   "title": "Sections",
+   "type": "array",
+   "items": {
+    "type": "string",
+    "enum": [
+     "timeline",
+     "regions",
+     "related"
+    ]
+   },
+   "default": [
+    "timeline",
+    "regions",
+    "related"
+   ],
+   "description": "What to fetch: `timeline` (interest over time + summary), `regions` (interest by region), `related` (related queries and topics, top and rising). Fewer sections = faster."
+  },
+  "outputMode": {
+   "title": "Output mode",
+   "type": "string",
+   "enum": [
+    "full",
+    "summary"
+   ],
+   "default": "full",
+   "description": "`full` includes every timeline point; `summary` drops the points and keeps latest/peak/average/changePct/trend to save tokens. Same price."
+  },
+  "compare": {
+   "title": "Compare keywords",
+   "type": "boolean",
+   "default": true,
+   "description": "On: keywords share one 0-100 scale (Google's comparison mode, groups of 5). Off: each keyword is scaled on its own."
+  },
+  "property": {
+   "title": "Search property",
+   "type": "string",
+   "enum": [
+    "web",
+    "youtube",
+    "news",
+    "images",
+    "shopping"
+   ],
+   "default": "web",
+   "description": "Which Google search to measure. Default web."
+  },
+  "category": {
+   "title": "Category ID",
+   "type": "integer",
+   "default": 0,
+   "description": "Google Trends category ID (0 = all categories)."
+  },
+  "maxRegions": {
+   "title": "Max regions",
+   "type": "integer",
+   "default": 15,
+   "minimum": 0,
+   "maximum": 250,
+   "description": "Top regions to return per keyword. Default 15."
+  },
+  "maxRelated": {
+   "title": "Max related items",
+   "type": "integer",
+   "default": 10,
+   "minimum": 0,
+   "maximum": 25,
+   "description": "Items per related list (top and rising, queries and topics). Default 10."
+  },
+  "language": {
+   "title": "Language",
+   "type": "string",
+   "default": "en-US",
+   "description": "Language for region and topic names, e.g. en-US, de."
+  }
+ }
+}

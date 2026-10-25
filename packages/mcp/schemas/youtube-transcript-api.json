@@ -1,0 +1,180 @@
+{
+ "type": "object",
+ "properties": {
+  "videos": {
+   "title": "YouTube videos, Shorts, playlists or channels",
+   "type": "array",
+   "description": "One per line: video, Shorts or youtu.be links, 11-character video IDs, playlist URLs, or channel URLs/@handles (add /shorts or /streams for those tabs). Channels return newest videos first."
+  },
+  "mode": {
+   "title": "Mode",
+   "type": "string",
+   "enum": [
+    "transcripts",
+    "listCaptionTracks"
+   ],
+   "default": "transcripts",
+   "description": "\"transcripts\" downloads transcripts. \"listCaptionTracks\" is free: it returns each video's caption languages and track types (creator or auto-generated) and which track a transcript run would return, without downloading or charging a transcript. Up to 1,000 videos per run. Example: \"listCaptionTracks\""
+  },
+  "searchQueries": {
+   "title": "YouTube search terms",
+   "type": "array",
+   "description": "Optional. Each term is searched on YouTube and its top videos are transcribed (up to \"Max videos per source\")."
+  },
+  "searchSort": {
+   "title": "Search sort",
+   "type": "string",
+   "enum": [
+    "relevance",
+    "date",
+    "views",
+    "shorts"
+   ],
+   "default": "relevance",
+   "description": "How search results are ordered."
+  },
+  "maxVideosPerSource": {
+   "title": "Max videos per source",
+   "type": "integer",
+   "minimum": 0,
+   "maximum": 10000,
+   "default": 50,
+   "description": "Cap per playlist, channel tab or search term (newest first for channels). 0 = all. Single video links are always included."
+  },
+  "maxVideos": {
+   "title": "Max videos in total",
+   "type": "integer",
+   "minimum": 0,
+   "default": 0,
+   "description": "Overall cap across all sources. 0 = no cap."
+  },
+  "publishedAfter": {
+   "title": "Published on or after",
+   "type": "string",
+   "description": "Only videos published on/after this date: YYYY-MM-DD or relative like \"30 days\". Uses exact upload dates."
+  },
+  "publishedBefore": {
+   "title": "Published on or before",
+   "type": "string",
+   "description": "Only videos published on/before this date: YYYY-MM-DD or relative like \"7 days\"."
+  },
+  "onlyNewVideos": {
+   "title": "Only new videos (incremental monitoring)",
+   "type": "boolean",
+   "default": false,
+   "description": "Skip videos this monitor already delivered in earlier runs (not charged). Schedule the run daily to track competitor channels."
+  },
+  "monitorId": {
+   "title": "Monitor name",
+   "type": "string",
+   "description": "Optional name for the incremental-monitoring memory, e.g. \"competitors-tech\". Defaults to the list of sources."
+  },
+  "languages": {
+   "title": "Preferred languages",
+   "type": "array",
+   "default": [
+    "en"
+   ],
+   "description": "Caption languages in order of preference (ISO codes, e.g. en, es, pt-BR). The first one available is returned. Regional variants count: \"en\" also matches en-GB and en-US, and a human-made track in any variant is used before an auto-generated one."
+  },
+  "captionType": {
+   "title": "Caption type",
+   "type": "string",
+   "enum": [
+    "any",
+    "manual",
+    "auto"
+   ],
+   "default": "any",
+   "description": "Which caption tracks may be used. Every result says whether it is auto-generated."
+  },
+  "preferManual": {
+   "title": "Prefer human-made captions",
+   "type": "boolean",
+   "default": true,
+   "description": "When both exist in a language (including regional variants such as en-GB / en-US), use the human-made track."
+  },
+  "translateTo": {
+   "title": "Translate to (YouTube auto-translate)",
+   "type": "string",
+   "description": "Optional ISO code, best effort. If none of the preferred languages exists, ask YouTube for its machine translation. YouTube often refuses these requests from servers; then the original captions are returned with a warning (or TRANSLATION_UNAVAILABLE if fallback is off). Never charged when it fails."
+  },
+  "fallbackToAnyLanguage": {
+   "title": "Fall back to the video's original language",
+   "type": "boolean",
+   "default": true,
+   "description": "If no preferred language (or translation) exists, return the video's original spoken language (human-made track if there is one), or the best available track, instead of failing. The result then has requestedLanguageFound=false, languageFallback (\"originalLanguage\" or \"anyLanguage\") and a warning."
+  },
+  "outputFormats": {
+   "title": "Transcript formats",
+   "type": "array",
+   "items": {
+    "type": "string",
+    "enum": [
+     "text",
+     "llm",
+     "segments",
+     "srt",
+     "vtt",
+     "markdown"
+    ]
+   },
+   "default": [
+    "text",
+    "segments"
+   ],
+   "description": "One or more formats per transcript. All formats cost the same. \"LLM-ready text\" adds llmText: the same words with sound cues ([Music], [Applause], (laughs)), music notes and >> speaker markers removed; the raw text field is unchanged. \"Markdown\" adds a markdown field per video and one combined TRANSCRIPTS.md file in the key-value store."
+  },
+  "punctuate": {
+   "title": "Restore punctuation on unpunctuated auto-captions",
+   "type": "boolean",
+   "default": false,
+   "description": "Some YouTube auto-generated captions come as one long lowercase stream with no punctuation. When enabled, those tracks get sentence punctuation (. , ?) and capitalization restored by a built-in model, returned as punctuatedText (and punctuatedSegments). The raw text and segments are never changed. Human-made captions and auto-captions YouTube already punctuated are left as they are. No extra charge. Supported: English and 44 other space-separated languages (not Japanese/Chinese)."
+  },
+  "includeMetadata": {
+   "title": "Video metadata",
+   "type": "boolean",
+   "default": true,
+   "description": "Title, channel, duration, views, tags, thumbnail."
+  },
+  "includeDetails": {
+   "title": "Publish date, likes, comments and subscribers",
+   "type": "boolean",
+   "default": true,
+   "description": "Adds publishDate, likeCount, commentCount and the channel's subscriberCount (one extra request per video, no extra charge). YouTube rounds comment counts above 1,000 and subscriber counts (e.g. 2.4M), so those are approximate. Turned on automatically when you use a date filter."
+  },
+  "includeDescription": {
+   "title": "Video description",
+   "type": "boolean",
+   "default": false,
+   "description": "Adds the full video description."
+  },
+  "proxyConfiguration": {
+   "title": "Proxy",
+   "type": "object",
+   "description": "Leave empty for automatic mode: the Actor starts without a proxy and, if YouTube blocks it, switches to Apify datacenter and then residential proxy at no extra cost to you. Set your own proxy here to override."
+  },
+  "disableAutoProxy": {
+   "title": "Disable automatic proxy escalation",
+   "type": "boolean",
+   "default": false,
+   "description": "Only for debugging: never switch to a proxy automatically."
+  },
+  "maxConcurrency": {
+   "title": "Parallel requests",
+   "type": "integer",
+   "minimum": 1,
+   "maximum": 20,
+   "default": 5,
+   "description": "Videos fetched in parallel."
+  },
+  "maxRetries": {
+   "title": "Retries per request",
+   "type": "integer",
+   "minimum": 0,
+   "maximum": 6,
+   "default": 3,
+   "description": "Retries with backoff (and a fresh proxy session) after rate limits or network errors."
+  }
+ }
+}

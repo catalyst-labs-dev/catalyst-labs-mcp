@@ -1,0 +1,85 @@
+{
+ "type": "object",
+ "properties": {
+  "urls": {
+   "title": "Document URLs",
+   "type": "array",
+   "description": "Public links to PDF, DOCX, XLSX, XLS, CSV, HTML, TXT or MD files (max 100). Type is detected from the file bytes, not the extension."
+  },
+  "files": {
+   "title": "Files (base64)",
+   "type": "array",
+   "description": "Optional inline files for agents that hold the bytes: `[{\"name\": \"report.pdf\", \"base64\": \"...\"}]`. Keep under ~9 MB total (input size limit)."
+  },
+  "maxChars": {
+   "title": "Max characters per document",
+   "type": "integer",
+   "default": 50000,
+   "minimum": 0,
+   "description": "Token budget per document (about 4 characters = 1 token). Cut at a paragraph boundary; 0 = no limit. You pay only for the pages actually returned. Default 50000."
+  },
+  "pages": {
+   "title": "PDF page range",
+   "type": "string",
+   "description": "PDF only: pages to convert, e.g. `1-10`, `5`, `20-`. Default all (up to maxPages)."
+  },
+  "maxPages": {
+   "title": "Max PDF pages",
+   "type": "integer",
+   "default": 200,
+   "minimum": 1,
+   "maximum": 1000,
+   "description": "Safety cap on PDF pages per document. Default 200."
+  },
+  "chunkSize": {
+   "title": "Chunk size (characters)",
+   "type": "integer",
+   "default": 0,
+   "minimum": 0,
+   "maximum": 20000,
+   "description": "For RAG: split each document into chunks of about this many characters on heading/paragraph boundaries, each with its heading and page number. 0 = off (default)."
+  },
+  "chunkOverlap": {
+   "title": "Chunk overlap (characters)",
+   "type": "integer",
+   "default": 200,
+   "minimum": 0,
+   "maximum": 5000,
+   "description": "Characters repeated between consecutive chunks. Default 200."
+  },
+  "includeFullMarkdown": {
+   "title": "Return full markdown with chunks",
+   "type": "boolean",
+   "default": false,
+   "description": "When chunking, also return the whole `markdown` field (doubles output size). Off by default."
+  },
+  "pageMarkers": {
+   "title": "PDF page markers",
+   "type": "boolean",
+   "default": true,
+   "description": "Insert `<!-- page N -->` before each PDF page so citations can point at a page."
+  },
+  "keepLinks": {
+   "title": "Keep hyperlinks",
+   "type": "boolean",
+   "default": false,
+   "description": "Keep `[text](url)` links from DOCX/HTML. Off saves tokens."
+  },
+  "maxRowsPerSheet": {
+   "title": "Max rows per sheet",
+   "type": "integer",
+   "default": 500,
+   "minimum": 1,
+   "maximum": 5000,
+   "description": "Spreadsheets: rows per sheet rendered as a markdown table. Default 500."
+  },
+  "timeoutSecs": {
+   "title": "Download timeout (seconds)",
+   "type": "integer",
+   "default": 60,
+   "minimum": 5,
+   "maximum": 120,
+   "description": "Per-document download timeout. Default 60."
+  }
+ }
+}

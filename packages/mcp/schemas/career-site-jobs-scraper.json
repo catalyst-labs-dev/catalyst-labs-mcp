@@ -1,0 +1,187 @@
+{
+ "type": "object",
+ "properties": {
+  "companies": {
+   "title": "Companies",
+   "type": "array",
+   "description": "Required. Companies to get open jobs for, one per entry. Each entry can be: a company name (\"Stripe\"), a careers page (\"https://www.notion.so/careers\"), a job-board URL (\"https://jobs.ashbyhq.com/ramp\", \"https://intel.wd1.myworkdayjobs.com/External\") or \"platform:slug\" (\"lever:palantir\"). Workday and Oracle need a URL. Guessed boards are checked against the company name; mismatches are reported, not charged.",
+   "minItems": 1
+  },
+  "platforms": {
+   "title": "Platforms to try for auto-detection",
+   "type": "array",
+   "description": "Only used when an entry is a plain company name: which ATS to try. Leave empty to try all guessable ATS in order of market share. URLs and \"platform:slug\" entries ignore this. Example: [\"greenhouse\", \"lever\"].",
+   "items": {
+    "type": "string",
+    "enum": [
+     "greenhouse",
+     "lever",
+     "ashby",
+     "workable",
+     "recruitee",
+     "smartrecruiters",
+     "workday",
+     "oracle",
+     "personio",
+     "bamboohr",
+     "breezy",
+     "teamtailor",
+     "gem",
+     "rippling",
+     "pinpoint",
+     "jobvite",
+     "jazzhr"
+    ]
+   }
+  },
+  "keywords": {
+   "title": "Keywords",
+   "type": "array",
+   "description": "Keep jobs whose title contains ANY of these words (case-insensitive). Example: [\"engineer\", \"data\"]. Set searchInDescription to true to also match the description."
+  },
+  "excludeKeywords": {
+   "title": "Exclude title keywords",
+   "type": "array",
+   "description": "Drop jobs whose title contains any of these words. Example: [\"intern\", \"senior\"]."
+  },
+  "searchInDescription": {
+   "title": "Search keywords in descriptions",
+   "type": "boolean",
+   "description": "Also match keywords inside the job description (whole-word match, so \"go\" won't match \"Google\"). Descriptions are fetched for matching but only included in the output when \"Include job description\" is on. Slower on platforms that need one request per job (SmartRecruiters, Workday, Oracle, BambooHR, Rippling).",
+   "default": false
+  },
+  "locations": {
+   "title": "Locations",
+   "type": "array",
+   "description": "Keep jobs whose location, city, country or ISO country code contains ANY of these. Example: [\"London\", \"Germany\", \"US\", \"Remote\"]. \"Remote\" also matches jobs flagged remote."
+  },
+  "departments": {
+   "title": "Departments / teams",
+   "type": "array",
+   "description": "Keep jobs whose department or team contains ANY of these. Example: [\"Engineering\", \"Sales\"]."
+  },
+  "remoteOnly": {
+   "title": "Remote jobs only",
+   "type": "boolean",
+   "description": "Keep only jobs flagged remote (from the ATS remote/workplace field, or \"Remote\" in the location).",
+   "default": false
+  },
+  "postedSince": {
+   "title": "Posted since",
+   "type": "string",
+   "description": "Keep jobs posted after this date. Absolute (\"2026-10-01\") or relative (\"7 days\", \"24 hours\", \"2 weeks\"). Platforms without a posted date use the last-updated date."
+  },
+  "minSalary": {
+   "title": "Minimum yearly salary",
+   "type": "integer",
+   "minimum": 0,
+   "default": 0,
+   "description": "Keep only jobs whose posted pay reaches this yearly amount (0 = off). Hourly, daily, weekly and monthly pay is converted to yearly (hourly x 2080, monthly x 12); a range passes when its top end reaches the minimum. Jobs with no salary are dropped unless 'Include jobs without salary' is on. Example: 120000"
+  },
+  "salaryCurrency": {
+   "title": "Salary currency",
+   "type": "string",
+   "description": "Optional 3-letter currency for the minimum salary. Jobs paid in another currency are dropped; jobs with an unknown currency count as 'without salary'. Leave empty to compare amounts in any currency. Example: USD"
+  },
+  "includeJobsWithoutSalary": {
+   "title": "Include jobs without salary",
+   "type": "boolean",
+   "default": false,
+   "description": "With a minimum salary set, also keep jobs that publish no usable salary (or an unknown pay period). Off by default, so only jobs with verified pay are returned and charged."
+  },
+  "includeDescription": {
+   "title": "Include job description",
+   "type": "boolean",
+   "description": "Add descriptionText and descriptionHtml to each job (emails, phone numbers and named recruiters removed) and extract salary from the text. Slower on SmartRecruiters, Workday, Oracle, BambooHR and Rippling (one extra request per job).",
+   "default": false
+  },
+  "maxJobs": {
+   "title": "Max jobs (total)",
+   "type": "integer",
+   "description": "Cost cap: stop after this many jobs across all companies (each job is one billed result). 0 = no total limit. Example: 50.",
+   "default": 0,
+   "minimum": 0
+  },
+  "maxJobsPerCompany": {
+   "title": "Max jobs per company",
+   "type": "integer",
+   "description": "Cost cap: at most this many jobs per company (each job is one billed result). Default 100. Set 0 to get every open job (large Workday/Oracle boards can have 5,000+). In monitoring modes, jobs beyond the cap show up as new in later runs, so use 0 there.",
+   "default": 100,
+   "minimum": 0
+  },
+  "monitorMode": {
+   "title": "Monitoring mode",
+   "type": "string",
+   "description": "off (default) = return all matching jobs. new = only jobs not returned in earlier runs with the same stateKey (the first run is the baseline and returns everything). changes = new jobs plus a record with changeType \"removed\" for each previously returned job that has closed. Use with a schedule.",
+   "enum": [
+    "off",
+    "new",
+    "changes"
+   ],
+   "default": "off"
+  },
+  "onlyNewSinceLastRun": {
+   "title": "Only new jobs since last run (legacy)",
+   "type": "boolean",
+   "description": "Same as monitoring mode \"new\". Kept for backwards compatibility.",
+   "default": false
+  },
+  "stateStoreName": {
+   "title": "State store name",
+   "type": "string",
+   "description": "Named key-value store that keeps seen job IDs between runs.",
+   "default": "career-jobs-state"
+  },
+  "stateKey": {
+   "title": "Monitor ID",
+   "type": "string",
+   "description": "Use different IDs to keep separate watch lists (e.g. one per client or alert).",
+   "default": "default"
+  },
+  "maxConcurrency": {
+   "title": "Max concurrent companies",
+   "type": "integer",
+   "description": "How many companies to fetch in parallel (1-10). Keep it low to be polite.",
+   "default": 4,
+   "minimum": 1,
+   "maximum": 10
+  },
+  "detailConcurrency": {
+   "title": "Concurrent detail requests per board",
+   "type": "integer",
+   "description": "Parallel per-job detail requests (descriptions, exact dates) on platforms that need them (1-20).",
+   "default": 8,
+   "minimum": 1,
+   "maximum": 20
+  },
+  "requestTimeoutSecs": {
+   "title": "Request timeout (seconds)",
+   "type": "integer",
+   "default": 30,
+   "minimum": 5,
+   "maximum": 120,
+   "description": "Per-request timeout. Failed requests are retried up to 3 times with backoff."
+  },
+  "verifyCompanyName": {
+   "title": "Verify company name on guessed boards",
+   "type": "boolean",
+   "description": "When a board was found by guessing a slug from a name or domain, check that the board's company name matches. Mismatches are skipped (status uncertain_match, nothing charged). Turn off only if you know your names are exact slugs.",
+   "default": true
+  },
+  "workdayDiscovery": {
+   "title": "Find Workday boards from a company name",
+   "type": "boolean",
+   "default": true,
+   "description": "When a plain company name (like \"Intel\") isn't found on the guessable job boards, look for a myworkdayjobs.com link on the company's own website, then try common Workday board addresses. Adds a few seconds for names that aren't found. Turn off to skip."
+  },
+  "emitStatusRow": {
+   "title": "Add a status row when a company returns no jobs",
+   "type": "boolean",
+   "default": false,
+   "description": "Off by default so the output shape doesn't change. When on, every company that returns zero jobs gets one free (never charged) dataset row with recordType \"status\", its status (not_found, ok_no_open_jobs, uncertain_match, error...), the error and a suggestion. Useful for AI agents that only read the dataset. Job rows have no recordType field. The same details are always in the OUTPUT record."
+  }
+ },
+ "required": [
+  "companies"
+ ]
+}

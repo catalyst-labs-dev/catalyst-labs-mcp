@@ -1,0 +1,302 @@
+{
+ "type": "object",
+ "properties": {
+  "urls": {
+   "title": "URLs",
+   "type": "array",
+   "description": "Web pages to capture. Each URL gives one file per format. https:// is added if missing; duplicates are removed and invalid entries are reported for free. Example: [\"https://apify.com\", \"example.com/pricing\"]",
+   "minItems": 1
+  },
+  "formats": {
+   "title": "Output formats",
+   "type": "array",
+   "description": "Output formats per URL: \"png\", \"jpeg\", \"webp\" (screenshots) and/or \"pdf\". Each format is a separate file and charge. Default: [\"png\"]. Example: [\"webp\", \"pdf\"]",
+   "items": {
+    "type": "string",
+    "enum": [
+     "png",
+     "jpeg",
+     "webp",
+     "pdf"
+    ]
+   },
+   "default": [
+    "png"
+   ]
+  },
+  "fullPage": {
+   "title": "Full-page capture",
+   "type": "boolean",
+   "description": "Capture the whole scrollable page (true) or only the first screen/viewport (false). Default: true. Example: false for a quick above-the-fold thumbnail.",
+   "default": true
+  },
+  "fastMode": {
+   "title": "Fast mode",
+   "type": "boolean",
+   "default": false,
+   "description": "Trade completeness for speed. Skips the slow scroll that loads lazy images and scroll animations, and takes one full-page shot (up to 16,000 device px) instead of stitched tiles, so very long pages are cut off and below-the-fold images may be missing. Cookie walls, popups and sticky headers are still handled. Same price. Example: true"
+  },
+  "device": {
+   "title": "Device preset",
+   "type": "string",
+   "description": "Viewport preset: \"desktop\" (1440x900), \"desktop-hd\" (1920x1080), \"laptop\" (1280x800), \"tablet\" (820x1180 @2x) or \"mobile\" (iPhone 390x844 @3x, mobile user agent). Default: \"desktop\". Example: \"mobile\"",
+   "enum": [
+    "desktop",
+    "desktop-hd",
+    "laptop",
+    "tablet",
+    "mobile"
+   ],
+   "default": "desktop"
+  },
+  "width": {
+   "title": "Viewport width (px)",
+   "type": "integer",
+   "description": "Custom viewport width in CSS pixels; overrides the preset width. Example: 1366",
+   "minimum": 200,
+   "maximum": 3840
+  },
+  "height": {
+   "title": "Viewport height (px)",
+   "type": "integer",
+   "description": "Custom viewport height in CSS pixels; overrides the preset. With fullPage false this is the image height. Example: 768",
+   "minimum": 200,
+   "maximum": 4320
+  },
+  "deviceScaleFactor": {
+   "title": "Pixel density (1\u20133)",
+   "type": "integer",
+   "description": "Pixel density (1-3). 2 or 3 gives retina-sharp images but larger files. Default: from the preset (desktop 1, mobile 3). Example: 2",
+   "minimum": 1,
+   "maximum": 3
+  },
+  "maxHeight": {
+   "title": "Max image height (CSS px)",
+   "type": "integer",
+   "minimum": 200,
+   "maximum": 50000,
+   "description": "Longest page part to capture, in CSS pixels. Leave empty for the default: the whole page up to 36,000 device pixels (36,000 px on desktop, 18,000 on tablet, 12,000 on mobile), which covers almost every real page, including very long news front pages and Wikipedia lists. Longer pages are cut here and flagged with truncatedAtMaxHeight: true. Max 50,000 (PNG/JPEG are also limited to 60,000 device pixels, WebP to 16,383). Example: 8000 for smaller, faster files."
+  },
+  "quality": {
+   "title": "JPEG/WebP quality",
+   "type": "integer",
+   "description": "JPEG/WebP quality, 1-100. Ignored for PNG and PDF. Default: 80. Example: 60 for smaller files.",
+   "default": 80,
+   "minimum": 1,
+   "maximum": 100
+  },
+  "waitUntil": {
+   "title": "Wait until",
+   "type": "string",
+   "description": "When the page counts as loaded: \"domcontentloaded\" (fastest), \"load\" (default, waits up to 15 s for images) or \"networkidle\" (slowest, for heavy single-page apps). Example: \"networkidle\"",
+   "enum": [
+    "load",
+    "domcontentloaded",
+    "networkidle"
+   ],
+   "default": "load"
+  },
+  "waitForSelector": {
+   "title": "Wait for CSS selector",
+   "type": "string",
+   "description": "Wait until this CSS selector is visible before capturing (up to navigationTimeoutSecs). Use it for apps that render data late. Fails as SELECTOR_NOT_FOUND (not charged) if it never appears. Example: \"#main-chart\""
+  },
+  "captureSelector": {
+   "title": "Capture only this element (CSS selector)",
+   "type": "string",
+   "description": "Capture only this element instead of the page (screenshots only). Fails as SELECTOR_NOT_FOUND (not charged) if missing. Example: \"article\", \"#pricing-table\""
+  },
+  "delayMs": {
+   "title": "Extra delay (ms)",
+   "type": "integer",
+   "description": "Extra wait in milliseconds after loading and before capturing, for animations or late widgets. Max 60000. Default: 0. Example: 2000",
+   "default": 0,
+   "minimum": 0,
+   "maximum": 60000
+  },
+  "scrollToBottom": {
+   "title": "Auto-scroll to load lazy content",
+   "type": "boolean",
+   "description": "Scroll through the page in steps (with short pauses) so lazy images, scroll-triggered sections and content loaded on scroll appear; keeps going while the page grows (bounded), then returns to the top. Default: true. Example: false for faster captures of short pages.",
+   "default": true
+  },
+  "freezeAnimations": {
+   "title": "Finish animations before capture",
+   "type": "boolean",
+   "default": true,
+   "description": "Put CSS animations, transitions and scroll-reveal effects (fade-ins, slide-ins, animated cards) in their final state, so the screenshot shows the finished page instead of half-faded or empty sections. Default: true. Example: false to capture the page exactly mid-animation."
+  },
+  "dismissCookieBanners": {
+   "title": "Remove cookie banners",
+   "type": "boolean",
+   "description": "Click \"Accept\" on cookie/consent banners (about 20 platforms such as OneTrust, Didomi, Sourcepoint, Cookiebot and Usercentrics, plus accept buttons in 18 languages) and hide what is left. Default: true. Example: false to capture the banner itself.",
+   "default": true
+  },
+  "hidePopups": {
+   "title": "Hide popups and overlays",
+   "type": "boolean",
+   "description": "Hide newsletter popups, full-screen overlays and chat widgets (Intercom, Drift, HubSpot, Zendesk and others). Default: true.",
+   "default": true
+  },
+  "stickyElements": {
+   "title": "Sticky/fixed elements (full-page)",
+   "type": "string",
+   "description": "How to handle sticky/fixed headers in full-page captures: \"static\" (show once at the top, default), \"hide\" (remove them) or \"keep\" (leave as the browser draws them; may repeat). Example: \"hide\"",
+   "enum": [
+    "static",
+    "hide",
+    "keep"
+   ],
+   "default": "static"
+  },
+  "hideSelectors": {
+   "title": "Hide these CSS selectors",
+   "type": "array",
+   "description": "CSS selectors of elements to hide before capturing. Example: [\".ad-slot\", \"#promo-bar\"]"
+  },
+  "customCss": {
+   "title": "Custom CSS",
+   "type": "string",
+   "description": "CSS injected before capturing. Example: \"body { font-size: 18px } .banner { display: none }\""
+  },
+  "headers": {
+   "title": "Extra HTTP headers",
+   "type": "object",
+   "description": "Extra HTTP headers sent with every request (Host, Content-Length and similar are ignored). Example: {\"Accept-Language\": \"de-DE\", \"Authorization\": \"Bearer abc\"}"
+  },
+  "cookies": {
+   "title": "Cookies",
+   "type": "array",
+   "description": "Cookies set before loading, for logged-in or region-specific pages. Each needs name and value; domain defaults to the URL host. Example: [{\"name\": \"session\", \"value\": \"abc123\", \"domain\": \".example.com\"}]"
+  },
+  "darkMode": {
+   "title": "Dark mode",
+   "type": "boolean",
+   "description": "Emulate the dark color scheme (prefers-color-scheme: dark). Only changes sites that support dark mode. Default: false.",
+   "default": false
+  },
+  "blockAds": {
+   "title": "Block ads and trackers",
+   "type": "boolean",
+   "description": "Block common ad and tracking hosts. Faster, cleaner captures. Default: true.",
+   "default": true
+  },
+  "pdfFormat": {
+   "title": "PDF paper size",
+   "type": "string",
+   "enum": [
+    "A4",
+    "Letter",
+    "Legal",
+    "A3",
+    "A5",
+    "Tabloid"
+   ],
+   "default": "A4",
+   "description": "PDF paper size: \"A4\" (default), \"Letter\", \"Legal\", \"A3\" or \"Tabloid\". Example: \"Letter\""
+  },
+  "pdfLandscape": {
+   "title": "PDF landscape",
+   "type": "boolean",
+   "default": false,
+   "description": "Landscape PDF pages. Default: false."
+  },
+  "pdfMargin": {
+   "title": "PDF margin",
+   "type": "string",
+   "default": "10mm",
+   "description": "PDF page margin on all sides, in CSS units. Default: \"10mm\". Example: \"0\" or \"0.5in\""
+  },
+  "pdfPrintBackground": {
+   "title": "PDF background graphics",
+   "type": "boolean",
+   "default": true,
+   "description": "Include background colors and images in PDFs. Default: true."
+  },
+  "pdfMediaType": {
+   "title": "PDF CSS media",
+   "type": "string",
+   "enum": [
+    "screen",
+    "print"
+   ],
+   "default": "screen",
+   "description": "CSS media for PDFs: \"screen\" (looks like the website, default) or \"print\" (uses the site's print stylesheet, often cleaner for articles). Example: \"print\""
+  },
+  "pdfSinglePage": {
+   "title": "PDF as one long page",
+   "type": "boolean",
+   "default": false,
+   "description": "Make the PDF one long page with the full page height and no page breaks, like a full-page screenshot in vector form. Default: false."
+  },
+  "captureErrorPages": {
+   "title": "Capture HTTP error pages (4xx/5xx)",
+   "type": "boolean",
+   "default": false,
+   "description": "Capture and charge pages that return HTTP 4xx/5xx (for example to document a 404). Default: false, so error pages fail as HTTP_ERROR and are not charged."
+  },
+  "captureBlockedPages": {
+   "title": "Capture bot-check / captcha pages",
+   "type": "boolean",
+   "default": false,
+   "description": "Capture and charge bot-check/challenge pages (Cloudflare, DataDome...) instead of failing as BLOCKED. Default: false, so blocked pages are not charged."
+  },
+  "retryBlockedWithProxy": {
+   "title": "Retry bot-blocked pages through Apify Proxy",
+   "type": "boolean",
+   "default": true,
+   "description": "When a site answers with a bot check and you did not set your own proxy, retry that URL once through Apify Proxy (datacenter) with a fresh, regular browser. Blocked pages are never charged, whether or not the retry works. Default: true. Example: false to fail fast on blocked sites."
+  },
+  "navigationTimeoutSecs": {
+   "title": "Navigation timeout (s)",
+   "type": "integer",
+   "default": 45,
+   "minimum": 5,
+   "maximum": 180,
+   "description": "Seconds to wait for the page to start loading and for waitForSelector. Default: 45. Example: 90 for slow sites."
+  },
+  "pageTimeoutSecs": {
+   "title": "Total time limit per URL (s)",
+   "type": "integer",
+   "minimum": 15,
+   "maximum": 600,
+   "description": "Time limit in seconds for one URL (load, scroll and capture). Leave empty for 120 s, or up to 240 s automatically on runs with less than 4 GB memory (less than 1 vCPU). Very tall pages automatically get extra time (up to +120 s) once their height is known."
+  },
+  "maxRetries": {
+   "title": "Retries",
+   "type": "integer",
+   "default": 1,
+   "minimum": 0,
+   "maximum": 5,
+   "description": "Retries for temporary errors (timeouts, network, crashes, blank pages). DNS, HTTP and selector errors are not retried. Default: 1. Example: 2"
+  },
+  "maxConcurrency": {
+   "title": "Parallel pages",
+   "type": "integer",
+   "minimum": 1,
+   "maximum": 20,
+   "description": "How many pages to load in parallel. Leave empty for automatic: 1 below 2 GB memory, 2 at 2\u20134 GB, then 1 per 2 GB (4 at 8 GB, max 8). New pages also wait while memory is above 70% or CPU is saturated, and only one very tall page per vCPU is laid out at a time."
+  },
+  "perHostConcurrency": {
+   "title": "Max parallel pages per website",
+   "type": "integer",
+   "default": 2,
+   "minimum": 1,
+   "maximum": 10,
+   "description": "Max parallel pages on the same website, to stay polite and avoid rate limits. Default: 2."
+  },
+  "proxyConfiguration": {
+   "title": "Proxy",
+   "type": "object",
+   "description": "Proxy for all requests. Not needed for most sites; for sites that block data centers use Apify residential proxy. Example: {\"useApifyProxy\": true, \"apifyProxyGroups\": [\"RESIDENTIAL\"]}"
+  },
+  "fileNamePrefix": {
+   "title": "File name prefix",
+   "type": "string",
+   "description": "Prefix for file keys in the key-value store. Example: \"release-42\" gives keys like \"release-42-0000-example.com.png\""
+  }
+ },
+ "required": [
+  "urls"
+ ]
+}
