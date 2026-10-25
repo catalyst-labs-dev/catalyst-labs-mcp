@@ -2,8 +2,8 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.catalyst-labs-dev/local-government-decision-lookup",
   "title": "Local Government Decision Lookup & Fact Check",
-  "description": "Fact-check council votes vs official minutes: verdict, tally, no voters, source. Never guesses.",
-  "version": "1.0.0",
+  "description": "Verify Iowa council/county votes from official minutes after a transcript search. Verdict, tally.",
+  "version": "1.0.1",
   "websiteUrl": "https://apify.com/catalyst-labs/local-government-decision-lookup",
   "repository": {
     "url": "https://github.com/catalyst-labs-dev/catalyst-labs-mcp",

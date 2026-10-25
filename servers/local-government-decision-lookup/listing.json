@@ -7,15 +7,15 @@
   "storeUrl": "https://apify.com/catalyst-labs/local-government-decision-lookup",
   "sourceRepo": "https://github.com/catalyst-labs-dev/local-government-decision-lookup",
   "name": "Local Government Decision Lookup & Fact Check",
-  "tagline": "Fact-check Iowa city council & county board votes against official minutes, or look up by address.",
-  "description": "Fact-check a city council or county board claim against official minutes. Returns supported, contradicted or no_record, with tally, no voters, amount and source link. It never guesses. $0.005 per lookup; uncovered places free. 21 Iowa governments.",
+  "tagline": "The verification step after a meeting search: confirm an Iowa council or county board vote from the official minutes.",
+  "description": "Verification step after a meeting or transcript search: check an Iowa council or county board claim against official minutes. Returns supported, contradicted or no_record with tally, no voters, amount, minutes link. 82 governments, 21,097 votes, 0.45% audited error. $0.005/lookup.",
   "whenToChoose": [
-    "You must verify a statement about a local vote before repeating it.",
-    "You need who voted no on a council item, with a source link.",
+    "You found a council or county meeting moment with a transcript or meeting search tool (e.g. Citizen Portal, Red Tape Recordings, Hamlet, or City Council & Public Meeting Transcripts) and need the official recorded vote before repeating it.",
+    "You must verify a statement about a local vote: get supported / contradicted / no_record with the tally, who voted no, the amount and the official minutes link.",
     "You need every recorded decision mentioning a street or address (rezonings, plats, hearings).",
-    "You want a cheap, fast, deterministic answer with no web browsing."
+    "You want statewide Iowa pass rates and outliers by topic (mode=trends), each example linked to its minutes."
   ],
-  "chooseAnotherToolWhen": "The place is outside the 21 covered Iowa governments, you need same-day results, or you need discussion or video (use City Council & Public Meeting Transcripts).",
+  "chooseAnotherToolWhen": "The place is outside the 82 covered Iowa governments (returns not_covered, free), you need same-day results, or you need discussion, public comment or video (use a transcript or meeting search tool first, then come back here to verify the vote).",
   "categories": [
     "Search",
     "News",
@@ -32,5 +32,26 @@
     "des moines",
     "open data",
     "apify"
+  ],
+  "measured": {
+    "build": "1.0.7",
+    "governments": 82,
+    "counties": 57,
+    "cities": 25,
+    "votes": 21097,
+    "auditErrorRate": "0.45% (10 of 2,233 sampled votes)",
+    "pricePerLookup": "$0.005",
+    "uncoveredPlaces": "free",
+    "modes": [
+      "lookup",
+      "trends"
+    ]
+  },
+  "samplePrompts": [
+    "A transcript search shows the Des Moines council discussing the E. Locust Streetscape Repair. Verify against the official minutes: did they approve $1,750,000, and what was the tally?",
+    "After finding the meeting clip, check this claim: 'Marshalltown voted 4-3 on a data center moratorium.' Return the verdict, who voted no and the minutes link.",
+    "Fact-check before publishing: 'Story County supervisors unanimously approved the budget.' Supported, contradicted or no record?",
+    "Which recorded council decisions mention 1917 Center Street? Link the official minutes.",
+    "Statewide trends: how often did Iowa councils and boards pass data center items in 2026, and which places split?"
   ]
 }

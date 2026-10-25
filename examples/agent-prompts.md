@@ -53,5 +53,10 @@ MCP: `https://mcp.apify.com/?tools=catalyst-labs/city-council-meeting-transcript
 ## Local Decision Check (Iowa)
 MCP: `https://mcp.apify.com/?tools=catalyst-labs/local-government-decision-lookup`
 
-- "Fact-check: 'Sioux City approved the Flock camera contract 4-1.' Who voted no?"
-- "Which recorded council decisions mention 1917 Center Street? Link the minutes."
+Use it as the **verification step** after a meeting or transcript search (Citizen Portal, Red Tape Recordings, Hamlet, or our City Council & Public Meeting Transcripts): the search finds the moment, this tool confirms the official recorded vote from the minutes. 82 Iowa governments (57 counties, 25 cities), 21,097 votes, 0.45% audited error rate (10 of 2,233 sampled). $0.005 per lookup; uncovered places free.
+
+- "A transcript search shows the Des Moines council discussing the E. Locust Streetscape Repair. Verify against the official minutes: did they approve $1,750,000, and what was the tally?"
+- "After finding the meeting clip, check this claim: 'Marshalltown voted 4-3 on a data center moratorium.' Return the verdict, who voted no and the minutes link."
+- "Fact-check before publishing: 'Story County supervisors unanimously approved the budget.' Supported, contradicted or no record?"
+- "Which recorded council decisions mention 1917 Center Street? Link the official minutes."
+- "Statewide trends: how often did Iowa councils and boards pass data center items in 2026, and which places split?"
