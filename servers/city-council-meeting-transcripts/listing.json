@@ -7,7 +7,7 @@
   "storeUrl": "https://apify.com/catalyst-labs/city-council-meeting-transcripts",
   "name": "City Council & Public Meeting Transcripts",
   "tagline": "Timestamped city council and county board meeting transcripts with agenda items and votes.",
-  "description": "Timestamped city council and county board transcripts tied to agenda items and official votes. Granicus, Swagit, Legistar and YouTube; type a city or paste URLs. $0.008 per audio minute; list meetings first for $0.002 each. Keyword alerts and new-meeting monitoring.",
+  "description": "Timestamped city council and county board transcripts tied to agenda items and official votes. Granicus, Swagit, Legistar and YouTube; type a city or paste URLs. $0.008 per audio minute; list meetings first for $0.001 each. Keyword alerts and new-meeting monitoring.",
   "categories": [
     "AI",
     "Videos",
