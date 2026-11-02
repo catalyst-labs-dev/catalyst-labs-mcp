@@ -23,6 +23,9 @@
     },
     "google-trends-api": {
       "url": "https://mcp.apify.com/?tools=catalyst-labs/google-trends-api"
+    },
+    "website-tech-stack-lookup": {
+      "url": "https://mcp.apify.com/?tools=catalyst-labs/website-tech-stack-lookup"
     }
   }
 }

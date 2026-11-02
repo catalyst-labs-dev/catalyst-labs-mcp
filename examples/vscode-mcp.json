@@ -56,6 +56,13 @@
       "headers": {
         "Authorization": "Bearer ${input:apify-token}"
       }
+    },
+    "website-tech-stack-lookup": {
+      "type": "http",
+      "url": "https://mcp.apify.com/?tools=catalyst-labs/website-tech-stack-lookup",
+      "headers": {
+        "Authorization": "Bearer ${input:apify-token}"
+      }
     }
   }
 }

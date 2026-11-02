@@ -1,0 +1,49 @@
+{
+  "_comment": "Shared listing copy for every directory. Keep in sync with server.json and the Apify Store page.",
+  "slug": "website-tech-stack-lookup",
+  "apifyActor": "catalyst-labs/website-tech-stack-lookup",
+  "mcpUrl": "https://mcp.apify.com/?tools=catalyst-labs/website-tech-stack-lookup",
+  "mcpToolName": "catalyst-labs--website-tech-stack-lookup",
+  "standbyUrl": null,
+  "storeUrl": "https://apify.com/catalyst-labs/website-tech-stack-lookup",
+  "name": "Website Tech Stack Lookup",
+  "tagline": "Domains in, full tech stack out: technologies with versions, confidence and evidence, plus DNS/email providers and company contacts.",
+  "description": "Website technology detection for agents: give domains or URLs, get one JSON row per site with detected technologies (7,600+ in the fingerprint set), versions, confidence and evidence, DNS and email providers, and site/company metadata with contact-page emails. In our test it found 93% of known technologies on 31 well-known sites vs 65% for the most-used Store alternative. $0.003 per site; failed sites never charged.",
+  "whenToChoose": [
+    "You need to know what a site is built on (CMS, e-commerce platform, analytics, CDN, frameworks) for lead lists, sales research or competitive analysis.",
+    "You need evidence and a confidence score per technology, not just a name.",
+    "You need DNS/email providers (e.g. who hosts a company's mail) alongside the stack."
+  ],
+  "chooseAnotherToolWhen": "Historical tech-stack changes over time, or technologies that only load after login.",
+  "categories": [
+    "AI",
+    "Lead Generation",
+    "Developer Tools"
+  ],
+  "tags": [
+    "tech stack",
+    "technology lookup",
+    "wappalyzer alternative",
+    "builtwith alternative",
+    "website technology",
+    "lead generation",
+    "sales research",
+    "mcp",
+    "apify"
+  ],
+  "auth": "OAuth (sign in with Apify) or header Authorization: Bearer <APIFY_TOKEN>",
+  "exampleToolCall": {
+    "domains": [
+      "stripe.com",
+      "allbirds.com"
+    ]
+  },
+  "exampleCost": "$0.006 for 2 sites",
+  "serverConfig": {
+    "mcpServers": {
+      "website-tech-stack-lookup": {
+        "url": "https://mcp.apify.com/?tools=catalyst-labs/website-tech-stack-lookup"
+      }
+    }
+  }
+}

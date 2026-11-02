@@ -60,3 +60,9 @@ Use it as the **verification step** after a meeting or transcript search (Citize
 - "Fact-check before publishing: 'Story County supervisors unanimously approved the budget.' Supported, contradicted or no record?"
 - "Which recorded council decisions mention 1917 Center Street? Link the official minutes."
 - "Statewide trends: how often did Iowa councils and boards pass data center items in 2026, and which places split?"
+
+## Website Tech Stack Lookup
+MCP: `https://mcp.apify.com/?tools=catalyst-labs/website-tech-stack-lookup`
+
+- "What e-commerce platform, analytics and CDN do allbirds.com and stripe.com use? Include versions and evidence."
+- "For these 20 domains, which run Shopify, and who hosts their email?"

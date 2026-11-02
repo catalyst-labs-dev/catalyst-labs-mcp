@@ -90,6 +90,19 @@
       "env": {
         "APIFY_TOKEN": "<your-apify-token>"
       }
+    },
+    "website-tech-stack-lookup": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://mcp.apify.com/?tools=catalyst-labs/website-tech-stack-lookup",
+        "--header",
+        "Authorization: Bearer ${APIFY_TOKEN}"
+      ],
+      "env": {
+        "APIFY_TOKEN": "<your-apify-token>"
+      }
     }
   }
 }
