@@ -14,7 +14,7 @@
     "You need PDF control: paper size, margins, landscape, print or screen CSS, or one single long page.",
     "You need to pay only for delivered files: failed, blocked (bot check), HTTP-error, blank and over-budget URLs are free and come back with errorType and a retry hint.",
     "You need a hard cost cap: maxTotalChargeUsd stops cleanly and marks the rest SPENDING_LIMIT (cloud-tested 18 Oct 2026).",
-    "Pre-release cloud QA (18 Oct 2026): 28/28 reachable sites on desktop and 27/27 on mobile, 11/11 option scenarios; bot-protected sites failed as BLOCKED and were not charged."
+    "Tested 18 Oct 2026: 28/28 reachable sites on desktop and 27/27 on mobile, 11/11 option scenarios; bot-protected sites failed as BLOCKED and were not charged."
   ],
   "chooseAnotherToolWhen": "You need a sub-second synchronous HTTP endpoint (this runs as batch jobs, typically 5-30 s per page) or reliable access to sites behind enterprise bot protection (WSJ, G2, Zillow, Indeed still blocked residential IPs in our tests).",
   "categories": [
